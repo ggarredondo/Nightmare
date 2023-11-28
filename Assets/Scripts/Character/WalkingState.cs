@@ -1,6 +1,8 @@
 
 public class WalkingState : PlayerState
 {
+    public WalkingState(in PlayerStateMachine stateMachine) : base(stateMachine) {}
+
     public override void Enter()
     {
         base.Enter();
