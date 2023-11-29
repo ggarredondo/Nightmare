@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using RefDelegates;
 
 public class PlayerController : MonoBehaviour
 {
-    public event ActionIn<Vector2> OnMovement;
+    private Vector2 movementDirection;
 
-    public void Initialize() {}
+    public void Initialize() => movementDirection = Vector2.zero;
     public void Reference() {}
 
-    public void Movement(InputAction.CallbackContext context) 
+    public void PressMovement(InputAction.CallbackContext context) 
     {
-        OnMovement?.Invoke(context.ReadValue<Vector2>());
+        movementDirection = context.ReadValue<Vector2>();
     }
+
+    public ref readonly Vector2 MovementDirection => ref movementDirection;
 }

@@ -10,6 +10,15 @@
                     "type": "Value",
                     "id": "fdbd6369-a2b5-4ef8-bc2c-8ee653655c38",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "b415da09-5125-45d5-9ff5-605a69ba3134",
+                    "expectedControlType": "Vector2",
                     "processors": "NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
@@ -26,6 +35,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08ffaa0c-d99c-4cf8-9f40-756f14fb00f6",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Scheme",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -34,7 +54,13 @@
         {
             "name": "Scheme",
             "bindingGroup": "Scheme",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }

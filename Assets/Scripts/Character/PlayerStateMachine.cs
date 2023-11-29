@@ -1,8 +1,11 @@
+using UnityEngine;
 
 [System.Serializable]
 public class PlayerStateMachine
 {
+    private MonoBehaviour monoBehaviour;
     private PlayerController controller;
+    private PlayerPhysics physics;
     private PlayerState currentState;
     private WalkingState walkingState;
 
@@ -10,9 +13,11 @@ public class PlayerStateMachine
     {
         walkingState = new WalkingState(this);
     }
-    public void Reference(in PlayerController controller) 
+    public void Reference(in MonoBehaviour monoBehaviour, in PlayerController controller, in PlayerPhysics physics) 
     {
+        this.monoBehaviour = monoBehaviour;
         this.controller = controller;
+        this.physics = physics;
         TransitionToWalking();
     }
 
@@ -26,4 +31,6 @@ public class PlayerStateMachine
     public void TransitionToWalking() => ChangeState(walkingState);
     public ref readonly PlayerState CurrentState => ref currentState;
     public ref readonly PlayerController Controller => ref controller;
+    public ref readonly PlayerPhysics Physics => ref physics;
+    public void EnableUpdate(bool enabled) => monoBehaviour.enabled = enabled;
 }
