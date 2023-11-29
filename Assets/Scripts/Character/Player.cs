@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
         controller = GetComponent<PlayerController>();
         controller.Initialize();
         stateMachine.Initialize(this);
-        physics.Initialize(GetComponent<Rigidbody>());
+        physics.Initialize(GetComponent<Rigidbody>(), GetComponent<Collider>());
         playerAnimation.Initialize(GetComponent<Animator>());
     }
     private void Start()

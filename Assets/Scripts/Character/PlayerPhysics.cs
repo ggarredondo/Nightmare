@@ -5,14 +5,16 @@ public class PlayerPhysics
 {
     private Transform cameraTransform;
     private Rigidbody rb;
+    private Collider col;
     private float smoothMagnitude = 0f;
 
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementAcceleration;
 
-    public void Initialize(in Rigidbody rb)
+    public void Initialize(in Rigidbody rb, in Collider col)
     {
         this.rb = rb;
+        this.col = col;
         cameraTransform = Camera.main.transform;
     }
     public void Reference() {}
@@ -32,4 +34,6 @@ public class PlayerPhysics
         smoothMagnitude = Mathf.Lerp(smoothMagnitude, direction.magnitude, movementAcceleration * Time.fixedDeltaTime);
         OnMovement?.Invoke(smoothMagnitude);
     }
+
+    public bool IsGrounded => Physics.Raycast(rb.position, -Vector3.up, 0.1f);
 }
