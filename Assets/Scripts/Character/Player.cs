@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     {
         controller = GetComponent<PlayerController>();
         controller.Initialize();
-        stateMachine.Initialize();
+        stateMachine.Initialize(this);
         physics.Initialize(GetComponent<Rigidbody>());
         playerAnimation.Initialize(GetComponent<Animator>());
     }
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         controller.Reference();
         physics.Reference();
         playerAnimation.Reference(physics);
-        stateMachine.Reference(this, controller, physics);
+        stateMachine.Reference( controller, physics);
     }
     private void OnValidate()
     {

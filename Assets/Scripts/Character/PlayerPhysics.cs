@@ -6,6 +6,7 @@ public class PlayerPhysics
     private Transform cameraTransform;
     private Rigidbody rb;
     private float smoothMagnitude = 0f;
+
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementAcceleration;
 

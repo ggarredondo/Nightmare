@@ -167,6 +167,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b415da09-5125-45d5-9ff5-605a69ba3134
     m_ActionName: Gameplay/Look[/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2168286633247279865}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: PressFly
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 74d87e47-ed45-4bd1-a4bf-df7639dd77de
+    m_ActionName: Gameplay/Fly[/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -206,7 +222,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7909303862107862499}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4211b3704af15fb4a9bda0a3fecea670, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
