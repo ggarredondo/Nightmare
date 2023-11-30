@@ -11,6 +11,7 @@ public class PlayerPhysics
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementAcceleration;
     [SerializeField] private float groundRaycastOffset = 0.1f;
+    [SerializeField] private float jumpingImpulse;
 
     public void Initialize(in Rigidbody rb, in Collider col)
     {
@@ -21,10 +22,10 @@ public class PlayerPhysics
     public void Reference() {}
 
     public event System.Action<float> OnMovement;
+    public event System.Action OnJump;
 
-    /// <summary>
-    /// Use in Fixed Update.
-    /// </summary>
+    // Use all following methods in Fixed Update if necessary
+
     public void Movement(in Vector2 direction)
     {
         if (direction.magnitude > 0.1f) {
@@ -34,6 +35,13 @@ public class PlayerPhysics
         }
         smoothMagnitude = Mathf.Lerp(smoothMagnitude, direction.magnitude, movementAcceleration * Time.fixedDeltaTime);
         OnMovement?.Invoke(smoothMagnitude);
+    }
+
+    public void Jump(float magnitude)
+    {
+        Vector3 forceDirection = rb.transform.forward * magnitude + Vector3.up * jumpingImpulse;
+        rb.AddForce(forceDirection, ForceMode.Impulse);
+        OnJump?.Invoke();
     }
 
     public bool IsGrounded => Physics.Raycast(col.transform.position + Vector3.up * col.bounds.extents.y, -Vector3.up, col.bounds.extents.y + groundRaycastOffset);

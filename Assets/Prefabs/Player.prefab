@@ -104,9 +104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09b8c23172b1a546a1e0a6d259fa5e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateMachine:
+    stateName: 
   physics:
     rotationSpeed: 10
     movementAcceleration: 4
+    groundRaycastOffset: 0.1
+    jumpingImpulse: 3
   playerAnimation:
     animationSpeed: 1
 --- !u!114 &2168286633247279865

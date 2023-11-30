@@ -19,8 +19,9 @@ public class Player : MonoBehaviour
     {
         controller.Reference();
         physics.Reference();
-        playerAnimation.Reference(physics);
-        stateMachine.Reference( controller, physics);
+        stateMachine.Reference(controller, physics);
+        playerAnimation.Reference(stateMachine, physics); 
+        stateMachine.TransitionToWalking(); // Must be done last
     }
     private void OnValidate()
     {

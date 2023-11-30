@@ -6,6 +6,7 @@ public class WalkingState : PlayerState
     public override void Enter()
     {
         stateMachine.EnableUpdate(true);
+        stateMachine.Controller.OnPressFly += stateMachine.Physics.Jump;
         base.Enter();
     }
 
@@ -13,10 +14,12 @@ public class WalkingState : PlayerState
     public override void FixedUpdate() 
     {
         stateMachine.Physics.Movement(stateMachine.Controller.MovementDirection);
+        if (!stateMachine.Physics.IsGrounded) stateMachine.TransitionToFalling();
     }
 
     public override void Exit()
     {
+        stateMachine.Controller.OnPressFly -= stateMachine.Physics.Jump;
         base.Exit();
     }
 }

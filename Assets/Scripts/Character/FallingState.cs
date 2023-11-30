@@ -1,7 +1,7 @@
 
-public class FlyingState : PlayerState
+public class FallingState : PlayerState
 {
-    public FlyingState(in PlayerStateMachine stateMachine) : base("FLYING", stateMachine) {}
+    public FallingState(in PlayerStateMachine stateMachine) : base("FALLING", stateMachine) {}
 
     public override void Enter()
     {
@@ -10,8 +10,9 @@ public class FlyingState : PlayerState
     }
 
     public override void Update() {}
-    public override void FixedUpdate() 
+    public override void FixedUpdate()
     {
+        stateMachine.Physics.Movement(stateMachine.Controller.MovementDirection);
         if (stateMachine.Physics.IsGrounded) stateMachine.TransitionToWalking();
     }
 

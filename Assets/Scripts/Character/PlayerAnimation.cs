@@ -8,9 +8,12 @@ public class PlayerAnimation
     [SerializeField] private float animationSpeed = 1f;
 
     public void Initialize(in Animator animator) => this.animator = animator;
-    public void Reference(in PlayerPhysics physics) 
+    public void Reference(in PlayerStateMachine stateMachine, in PlayerPhysics physics) 
     {
         physics.OnMovement += (float magnitude) => animator.SetFloat("speed", magnitude);
+        physics.OnJump += () => { animator.applyRootMotion = false; animator.SetTrigger("jump"); };
+        stateMachine.FallingState.OnEnter += () => { animator.applyRootMotion = false; animator.SetTrigger("fall"); };
+        stateMachine.FallingState.OnExit += () => { animator.applyRootMotion = true; animator.SetTrigger("land"); };
     }
 
     public void OnValidate() { if (animator) animator.speed = animationSpeed; }
