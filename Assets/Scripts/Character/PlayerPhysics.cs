@@ -10,6 +10,7 @@ public class PlayerPhysics
 
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float movementAcceleration;
+    [SerializeField] private float groundRaycastOffset = 0.1f;
 
     public void Initialize(in Rigidbody rb, in Collider col)
     {
@@ -35,5 +36,5 @@ public class PlayerPhysics
         OnMovement?.Invoke(smoothMagnitude);
     }
 
-    public bool IsGrounded => Physics.Raycast(rb.position, -Vector3.up, 0.1f);
+    public bool IsGrounded => Physics.Raycast(col.transform.position + Vector3.up * col.bounds.extents.y, -Vector3.up, col.bounds.extents.y + groundRaycastOffset);
 }

@@ -1,7 +1,7 @@
 
 public class WalkingState : PlayerState
 {
-    public WalkingState(in PlayerStateMachine stateMachine) : base(stateMachine) {}
+    public WalkingState(in PlayerStateMachine stateMachine) : base("WALKING", stateMachine) {}
 
     public override void Enter()
     {
@@ -13,7 +13,6 @@ public class WalkingState : PlayerState
     public override void FixedUpdate() 
     {
         stateMachine.Physics.Movement(stateMachine.Controller.MovementDirection);
-        UnityEngine.Debug.Log(stateMachine.Physics.IsGrounded);
     }
 
     public override void Exit()

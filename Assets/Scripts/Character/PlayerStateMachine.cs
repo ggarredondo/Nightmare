@@ -7,6 +7,7 @@ public class PlayerStateMachine
     private PlayerController controller;
     private PlayerPhysics physics;
 
+    [SerializeField] [ReadOnlyField] private string stateName;
     private PlayerState currentState;
     private WalkingState walkingState;
     private FlyingState flyingState;
@@ -28,6 +29,7 @@ public class PlayerStateMachine
     {
         if (currentState != null) currentState.Exit();
         currentState = newState;
+        stateName = currentState.StateName;
         currentState.Enter();
     }
 
