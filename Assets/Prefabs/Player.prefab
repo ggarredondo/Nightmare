@@ -110,7 +110,7 @@ MonoBehaviour:
     rotationSpeed: 10
     movementAcceleration: 4
     groundRaycastOffset: 0.1
-    jumpingImpulse: 3
+    jumpingImpulse: 5
   playerAnimation:
     animationSpeed: 1
 --- !u!114 &2168286633247279865

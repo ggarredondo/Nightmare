@@ -1,12 +1,11 @@
 
-public class WalkingState : PlayerState
+public class JumpingState : PlayerState
 {
-    public WalkingState(in PlayerStateMachine stateMachine) : base("WALKING", stateMachine) {}
+    public JumpingState(in PlayerStateMachine stateMachine) : base("JUMPING", stateMachine) {}
 
     public override void Enter()
     {
         stateMachine.EnableUpdate(true);
-        stateMachine.Controller.OnPressFly += stateMachine.Physics.Jump;
         base.Enter();
     }
 
@@ -19,13 +18,6 @@ public class WalkingState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.Controller.OnPressFly -= stateMachine.Physics.Jump;
         base.Exit();
-    }
-
-    public void Jump(float magnitude)
-    {
-        stateMachine.Physics.Jump(magnitude);
-        stateMachine.TransitionToJumping();
     }
 }
