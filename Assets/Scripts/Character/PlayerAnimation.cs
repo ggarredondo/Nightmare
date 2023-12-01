@@ -16,7 +16,11 @@ public class PlayerAnimation
         stateMachine.WalkingState.OnEnter += () => animator.SetBool("STATE_WALKING", true);
         stateMachine.WalkingState.OnExit += () => animator.SetBool("STATE_WALKING", false);
 
-        stateMachine.FallingState.OnEnter += () => { animator.applyRootMotion = false; animator.SetBool("STATE_FALLING", true); };
+        stateMachine.FallingState.OnEnter += () => { 
+            animator.applyRootMotion = false;
+            animator.ResetTrigger("jump");
+            animator.SetBool("STATE_FALLING", true); 
+        };
         stateMachine.FallingState.OnExit += () => animator.SetBool("STATE_FALLING", false);
 
         stateMachine.LandingState.OnEnter += () => { animator.applyRootMotion = true; animator.SetBool("STATE_LANDING", true); };
