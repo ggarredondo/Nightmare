@@ -12,7 +12,7 @@ public class FallingState : PlayerState
     public override void Update() {}
     public override void FixedUpdate()
     {
-        stateMachine.Physics.Movement(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
         if (stateMachine.Physics.IsGrounded) stateMachine.TransitionToLanding();
     }
 

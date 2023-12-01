@@ -9,9 +9,10 @@ public class PlayerPhysics
     private float smoothMagnitude = 0f;
 
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float movementAcceleration;
+    [SerializeField] private float magnitudeAcceleration;
     [SerializeField] private float groundRaycastOffset = 0.1f;
     [SerializeField] private float jumpingImpulse;
+    [SerializeField] private float airMovementSpeed;
 
     public void Initialize(in Rigidbody rb, in Collider col)
     {
@@ -21,7 +22,7 @@ public class PlayerPhysics
     }
     public void Reference() {}
 
-    public event System.Action<float> OnMovement;
+    public event System.Action<float> OnWalkingMovement;
     public event System.Action OnJump;
 
     // Use all following methods in Fixed Update if necessary
@@ -33,14 +34,24 @@ public class PlayerPhysics
             Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
             rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
-        smoothMagnitude = Mathf.Lerp(smoothMagnitude, direction.magnitude, movementAcceleration * Time.fixedDeltaTime);
-        OnMovement?.Invoke(smoothMagnitude);
+        smoothMagnitude = Mathf.Lerp(smoothMagnitude, direction.magnitude, magnitudeAcceleration * Time.fixedDeltaTime);
+    }
+
+    public void WalkingMovement(in Vector2 direction)
+    {
+        Movement(direction);
+        OnWalkingMovement?.Invoke(smoothMagnitude);
+    }
+
+    public void AirMovement(in Vector2 direction)
+    {
+        Movement(direction);
+        rb.AddForce(rb.transform.forward * smoothMagnitude * airMovementSpeed, ForceMode.VelocityChange);
     }
 
     public void Jump()
     {
-        Vector3 forceDirection = rb.transform.forward * smoothMagnitude + Vector3.up * jumpingImpulse;
-        rb.AddForce(forceDirection, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * jumpingImpulse, ForceMode.Impulse);
         OnJump?.Invoke();
     }
 

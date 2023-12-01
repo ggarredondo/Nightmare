@@ -10,7 +10,7 @@ public class PlayerAnimation
     public void Initialize(in Animator animator) => this.animator = animator;
     public void Reference(in PlayerStateMachine stateMachine, in PlayerPhysics physics) 
     {
-        physics.OnMovement += (float magnitude) => animator.SetFloat("magnitude", magnitude);
+        physics.OnWalkingMovement += (float magnitude) => animator.SetFloat("magnitude", magnitude);
         physics.OnJump += () => { animator.applyRootMotion = false; animator.SetTrigger("jump"); };
 
         stateMachine.WalkingState.OnEnter += () => animator.SetBool("STATE_WALKING", true);
