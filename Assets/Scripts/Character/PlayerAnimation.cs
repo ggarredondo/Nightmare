@@ -13,19 +13,11 @@ public class PlayerAnimation
         physics.OnWalkingMovement += (float magnitude) => animator.SetFloat("magnitude", magnitude);
         physics.OnJump += () => { animator.applyRootMotion = false; animator.SetTrigger("jump"); };
 
-        stateMachine.WalkingState.OnEnter += () => animator.SetBool("STATE_WALKING", true);
+        stateMachine.WalkingState.OnEnter += () => { animator.ResetTrigger("jump"); animator.SetBool("STATE_WALKING", true); };
         stateMachine.WalkingState.OnExit += () => animator.SetBool("STATE_WALKING", false);
 
-        stateMachine.FallingState.OnEnter += () => { 
-            animator.applyRootMotion = false;
-            animator.ResetTrigger("jump");
-            animator.SetBool("STATE_FALLING", true); 
-        };
-        stateMachine.FallingState.OnExit += () =>
-        {
-            animator.ResetTrigger("jump");
-            animator.SetBool("STATE_FALLING", false);
-        };
+        stateMachine.FallingState.OnEnter += () => { animator.applyRootMotion = false; animator.SetBool("STATE_FALLING", true); };
+        stateMachine.FallingState.OnExit += () => animator.SetBool("STATE_FALLING", false);
 
         stateMachine.LandingState.OnEnter += () => { animator.applyRootMotion = true; animator.SetBool("STATE_LANDING", true); };
         stateMachine.LandingState.OnExit += () => animator.SetBool("STATE_LANDING", false);
