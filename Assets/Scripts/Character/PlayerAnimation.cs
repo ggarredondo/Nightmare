@@ -13,7 +13,7 @@ public class PlayerAnimation
         physics.OnMovement += (float magnitude) => animator.SetFloat("magnitude", magnitude);
         physics.OnJump += () => { animator.applyRootMotion = false; animator.SetTrigger("jump"); };
         stateMachine.FallingState.OnEnter += () => { animator.applyRootMotion = false; animator.SetTrigger("fall"); };
-        stateMachine.FallingState.OnExit += () => { animator.applyRootMotion = true; animator.SetTrigger("land"); };
+        stateMachine.LandingState.OnEnter += () => { animator.applyRootMotion = true; animator.SetTrigger("land"); };
     }
 
     public void OnValidate() { if (animator) animator.speed = animationSpeed; }
