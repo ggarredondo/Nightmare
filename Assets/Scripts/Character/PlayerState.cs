@@ -3,7 +3,7 @@ using System;
 public abstract class PlayerState 
 {
     protected string stateName;
-    protected PlayerStateMachine stateMachine;
+    protected readonly PlayerStateMachine stateMachine;
     public event Action OnEnter, OnExit;
 
     public PlayerState(in string stateName, in PlayerStateMachine stateMachine)

@@ -10,6 +10,7 @@ public class PlayerStateMachine
 
     [SerializeField] [ReadOnlyField] private string stateName;
     [SerializeField] private double landingTimeMS;
+    [SerializeField] private double jumpMaxTimeMS;
 
     private PlayerState currentState;
     private WalkingState walkingState;
@@ -48,6 +49,7 @@ public class PlayerStateMachine
     public ref readonly PlayerController Controller => ref controller;
     public ref readonly PlayerPhysics Physics => ref physics;
     public double LandingTimeMS => landingTimeMS;
+    public double JumpMaxTimeMS => jumpMaxTimeMS;
 
     public ref readonly PlayerState CurrentState => ref currentState;
     public ref readonly WalkingState WalkingState => ref walkingState;

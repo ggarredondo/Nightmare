@@ -107,11 +107,12 @@ MonoBehaviour:
   stateMachine:
     stateName: 
     landingTimeMS: 100
+    jumpMaxTimeMS: 20
   physics:
     rotationSpeed: 10
     magnitudeAcceleration: 4
     groundRaycastOffset: 0.1
-    jumpingImpulse: 5
+    jumpingImpulse: 3
     airMovementSpeed: 0.1
   playerAnimation:
     animationSpeed: 1
