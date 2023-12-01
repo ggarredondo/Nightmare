@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public void Reference() {}
 
     public void PressMovement(InputAction.CallbackContext context) => movementDirection = context.ReadValue<Vector2>();
-    public void PressFly(InputAction.CallbackContext context) 
+    public void PressFly(InputAction.CallbackContext context)
     {
         if (context.performed) OnPressFly?.Invoke();
         else if (context.canceled) OnReleaseFly?.Invoke();
