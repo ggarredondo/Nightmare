@@ -5,11 +5,12 @@ using UnityEngine;
 public class WalkingState : PlayerState
 {
     private IEnumerator coroutine;
-    public WalkingState(in PlayerStateMachine stateMachine) : base("WALKING", stateMachine) => coroutine = CoyoteDelay();
+    public WalkingState(in PlayerStateMachine stateMachine) : base("WALKING", stateMachine) {}
 
     public override void Enter()
     {
         stateMachine.EnableUpdate(true);
+        coroutine = CoyoteDelay();
         stateMachine.Controller.OnPressFly += Jump;
         base.Enter();
     }

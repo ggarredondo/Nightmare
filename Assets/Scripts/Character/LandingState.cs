@@ -5,12 +5,12 @@ using UnityEngine;
 public class LandingState : PlayerState
 {
     public IEnumerator coroutine;
-    public LandingState(in PlayerStateMachine stateMachine) : base("LANDING", stateMachine) => coroutine = LandingDelay();
+    public LandingState(in PlayerStateMachine stateMachine) : base("LANDING", stateMachine) {}
 
     public override void Enter()
     {
-        //stateMachine.StartCoroutine(coroutine);
-        stateMachine.TransitionToWalking();
+        coroutine = LandingDelay();
+        stateMachine.StartCoroutine(coroutine);
         base.Enter();
     }
 

@@ -107,6 +107,7 @@ MonoBehaviour:
   stateMachine:
     stateName: 
     coyoteTimeMS: 0
+    landingTimeMS: 200
   physics:
     rotationSpeed: 10
     movementAcceleration: 4
