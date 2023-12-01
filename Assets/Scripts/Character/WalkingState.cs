@@ -1,16 +1,11 @@
-using System;
-using System.Collections;
-using UnityEngine;
 
 public class WalkingState : PlayerState
 {
-    private IEnumerator coroutine;
     public WalkingState(in PlayerStateMachine stateMachine) : base("WALKING", stateMachine) {}
 
     public override void Enter()
     {
         stateMachine.EnableUpdate(true);
-        coroutine = CoyoteDelay();
         stateMachine.Controller.OnPressFly += Jump;
         base.Enter();
     }
@@ -24,7 +19,6 @@ public class WalkingState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.StopCoroutine(coroutine);
         stateMachine.Controller.OnPressFly -= Jump;
         base.Exit();
     }
@@ -33,13 +27,5 @@ public class WalkingState : PlayerState
     {
         stateMachine.Controller.OnPressFly -= Jump;
         stateMachine.Physics.Jump(magnitude);
-    }
-
-    public IEnumerator CoyoteDelay()
-    {
-        stateMachine.Physics.EnableGravity(false);
-        yield return new WaitForSeconds((float)TimeSpan.FromMilliseconds(stateMachine.CoyoteTimeMS).TotalSeconds);
-        stateMachine.Physics.EnableGravity(true);
-        stateMachine.TransitionToFalling();
     }
 }

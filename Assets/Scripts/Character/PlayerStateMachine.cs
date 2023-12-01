@@ -9,7 +9,6 @@ public class PlayerStateMachine
     private PlayerPhysics physics;
 
     [SerializeField] [ReadOnlyField] private string stateName;
-    [SerializeField] private double coyoteTimeMS;
     [SerializeField] private double landingTimeMS;
 
     private PlayerState currentState;
@@ -48,7 +47,6 @@ public class PlayerStateMachine
 
     public ref readonly PlayerController Controller => ref controller;
     public ref readonly PlayerPhysics Physics => ref physics;
-    public double CoyoteTimeMS => coyoteTimeMS;
     public double LandingTimeMS => landingTimeMS;
 
     public ref readonly PlayerState CurrentState => ref currentState;
