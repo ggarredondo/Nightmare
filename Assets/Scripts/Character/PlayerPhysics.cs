@@ -37,9 +37,9 @@ public class PlayerPhysics
         OnMovement?.Invoke(smoothMagnitude);
     }
 
-    public void Jump(float magnitude)
+    public void Jump()
     {
-        Vector3 forceDirection = rb.transform.forward * magnitude + Vector3.up * jumpingImpulse;
+        Vector3 forceDirection = rb.transform.forward * smoothMagnitude + Vector3.up * jumpingImpulse;
         rb.AddForce(forceDirection, ForceMode.Impulse);
         OnJump?.Invoke();
     }

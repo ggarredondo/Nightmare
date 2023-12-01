@@ -106,8 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine:
     stateName: 
-    coyoteTimeMS: 0
-    landingTimeMS: 200
+    landingTimeMS: 100
   physics:
     rotationSpeed: 10
     movementAcceleration: 4

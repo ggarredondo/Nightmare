@@ -23,9 +23,9 @@ public class WalkingState : PlayerState
         base.Exit();
     }
 
-    public void Jump(float magnitude)
+    public void Jump()
     {
         stateMachine.Controller.OnPressFly -= Jump;
-        stateMachine.Physics.Jump(magnitude);
+        stateMachine.Physics.Jump();
     }
 }
