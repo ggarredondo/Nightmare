@@ -55,6 +55,8 @@ public class PlayerPhysics
         OnJump?.Invoke();
     }
 
+    public void JumpNoEvent() => rb.AddForce(Vector3.up * jumpingImpulse, ForceMode.Impulse);
+
     public void EnableGravity(bool enabled) => rb.useGravity = enabled;
 
     public bool IsGrounded => Physics.Raycast(col.transform.position + Vector3.up * col.bounds.extents.y, -Vector3.up, col.bounds.extents.y + groundRaycastOffset);

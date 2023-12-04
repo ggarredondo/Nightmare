@@ -25,7 +25,7 @@ public class FallingState : PlayerState
     {
         stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
         if (stateMachine.Physics.IsGrounded) stateMachine.TransitionToLanding();
-        if (keepJumping) stateMachine.Physics.Jump();
+        if (keepJumping) stateMachine.Physics.JumpNoEvent();
     }
 
     public override void Exit()
