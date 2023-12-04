@@ -12,6 +12,7 @@ public class PlayerPhysics
     [SerializeField] private float magnitudeAcceleration;
     [SerializeField] private float groundRaycastOffset = 0.1f;
     [SerializeField] private float jumpingImpulse;
+    [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
     [SerializeField] private float airMovementSpeed;
 
     public void Initialize(in Rigidbody rb, in Collider col)
@@ -55,7 +56,11 @@ public class PlayerPhysics
         OnJump?.Invoke();
     }
 
-    public void JumpNoEvent() => rb.AddForce(Vector3.up * jumpingImpulse, ForceMode.Impulse);
+    public void CancelJump()
+    {
+        if (rb.velocity.y > 0f)
+            rb.AddForce(-rb.velocity.y * Vector3.up * jumpCancelMultiplier, ForceMode.VelocityChange);
+    }
 
     public void EnableGravity(bool enabled) => rb.useGravity = enabled;
 
