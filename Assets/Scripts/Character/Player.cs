@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         controller.Reference();
         physics.Reference();
         stateMachine.Reference(controller, physics);
-        playerAnimation.Reference(stateMachine, physics); 
+        playerAnimation.Reference(controller, stateMachine, physics); 
         stateMachine.TransitionToWalking(); // Must be done last
     }
     private void OnValidate()

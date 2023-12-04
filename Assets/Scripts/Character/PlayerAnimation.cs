@@ -4,14 +4,21 @@ using UnityEngine;
 public class PlayerAnimation
 {
     private Animator animator;
-
     [SerializeField] private float animationSpeed = 1f;
 
     public void Initialize(in Animator animator) => this.animator = animator;
-    public void Reference(in PlayerStateMachine stateMachine, in PlayerPhysics physics) 
+    public void Reference(in PlayerController controller, in PlayerStateMachine stateMachine, in PlayerPhysics physics) 
     {
         physics.OnWalkingMovement += (float magnitude) => animator.SetFloat("magnitude", magnitude);
-        physics.OnJump += () => { animator.applyRootMotion = false; animator.SetTrigger("jump"); };
+
+        PlayerController controllerRef = controller;
+        physics.OnJump += () => {
+            animator.applyRootMotion = false;
+            Vector2 normalized = controllerRef.MovementDirection.normalized;
+            animator.SetFloat("horizontal", Mathf.Round(normalized.x));
+            animator.SetFloat("vertical", Mathf.Round(normalized.y));
+            animator.SetTrigger("jump");
+        };
 
         stateMachine.WalkingState.OnEnter += () => animator.SetBool("STATE_WALKING", true);
         stateMachine.WalkingState.OnExit += () => animator.SetBool("STATE_WALKING", false);
