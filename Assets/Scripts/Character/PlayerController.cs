@@ -4,12 +4,15 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Vector2 movementDirection;
+    public bool SprintPressed { get; private set; }
     public event System.Action OnPressFly, OnReleaseFly;
+
 
     public void Initialize() => movementDirection = Vector2.zero;
     public void Reference() {}
 
     public void PressMovement(InputAction.CallbackContext context) => movementDirection = context.ReadValue<Vector2>();
+    public void PressSprint(InputAction.CallbackContext context) => SprintPressed = context.performed;
     public void PressFly(InputAction.CallbackContext context)
     {
         if (context.performed) OnPressFly?.Invoke();
