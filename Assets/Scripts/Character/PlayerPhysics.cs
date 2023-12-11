@@ -5,7 +5,7 @@ public class PlayerPhysics
 {
     private Transform cameraTransform;
     private Rigidbody rb;
-    private Collider col;
+    [SerializeField] private Collider col;
     private float smoothMagnitude = 0f;
 
     [SerializeField] private float rotationSpeed;
@@ -15,10 +15,9 @@ public class PlayerPhysics
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
     [SerializeField] private float airMovementSpeed;
 
-    public void Initialize(in Rigidbody rb, in Collider col)
+    public void Initialize(in Rigidbody rb)
     {
         this.rb = rb;
-        this.col = col;
         cameraTransform = Camera.main.transform;
     }
     public void Reference() {}
@@ -58,8 +57,5 @@ public class PlayerPhysics
     }
 
     public void EnableGravity(bool enabled) => rb.useGravity = enabled;
-
     public float Velocity => new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
-
-    public bool IsGrounded => Physics.Raycast(col.transform.position + Vector3.up * col.bounds.extents.y, -Vector3.up, col.bounds.extents.y + groundRaycastOffset);
 }

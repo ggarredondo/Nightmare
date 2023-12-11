@@ -9,20 +9,18 @@ public class LandingState : PlayerState
 
     public override void Enter()
     {
+        stateMachine.GroundDetection.OnTakeOff += stateMachine.TransitionToFalling;
         coroutine = LandingDelay();
         stateMachine.StartCoroutine(coroutine);
         base.Enter();
     }
 
     public override void Update() {}
-    public override void FixedUpdate()
-    {
-        stateMachine.Physics.Movement(stateMachine.Controller.MovementDirection);
-        if (!stateMachine.Physics.IsGrounded) stateMachine.TransitionToFalling();
-    }
+    public override void FixedUpdate() => stateMachine.Physics.Movement(stateMachine.Controller.MovementDirection);
 
     public override void Exit()
     {
+        stateMachine.GroundDetection.OnTakeOff -= stateMachine.TransitionToFalling;
         stateMachine.StopCoroutine(coroutine);
         base.Exit();
     }

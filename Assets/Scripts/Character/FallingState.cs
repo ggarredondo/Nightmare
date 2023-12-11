@@ -5,17 +5,14 @@ public class FallingState : PlayerState
 
     public override void Enter()
     {
+        stateMachine.GroundDetection.OnLand += stateMachine.TransitionToLanding;
         stateMachine.Controller.OnReleaseFly += CancelJump;
         stateMachine.EnableUpdate(true);
         base.Enter();
     }
 
     public override void Update() {}
-    public override void FixedUpdate()
-    {
-        stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
-        if (stateMachine.Physics.IsGrounded) stateMachine.TransitionToLanding();
-    }
+    public override void FixedUpdate() => stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
 
     public void CancelJump()
     {
@@ -25,6 +22,7 @@ public class FallingState : PlayerState
 
     public override void Exit()
     {
+        stateMachine.GroundDetection.OnLand -= stateMachine.TransitionToLanding;
         stateMachine.Controller.OnReleaseFly -= CancelJump;
         base.Exit();
     }
