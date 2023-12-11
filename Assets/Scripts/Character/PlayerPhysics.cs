@@ -23,7 +23,7 @@ public class PlayerPhysics
     }
     public void Reference() {}
 
-    public event System.Action<float> OnWalkingMovement;
+    public event System.Action<float> OnMovement;
     public event System.Action OnJump;
 
     // Use all following methods in Fixed Update if necessary
@@ -36,12 +36,7 @@ public class PlayerPhysics
             rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
         smoothMagnitude = Mathf.Lerp(smoothMagnitude, direction.magnitude, magnitudeAcceleration * Time.fixedDeltaTime);
-    }
-
-    public void WalkingMovement(in Vector2 direction)
-    {
-        Movement(direction);
-        OnWalkingMovement?.Invoke(smoothMagnitude);
+        OnMovement?.Invoke(smoothMagnitude);
     }
 
     public void AirMovement(in Vector2 direction)

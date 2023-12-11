@@ -9,7 +9,7 @@ public class PlayerAnimation
     public void Initialize(in Animator animator) => this.animator = animator;
     public void Reference(in PlayerController controller, in PlayerStateMachine stateMachine, in PlayerPhysics physics) 
     {
-        physics.OnWalkingMovement += (float magnitude) => animator.SetFloat("magnitude", magnitude);
+        physics.OnMovement += (float magnitude) => animator.SetFloat("magnitude", magnitude);
 
         controller.OnPressSprint += () => animator.SetBool("sprinting", true);
         controller.OnReleaseSprint += () => animator.SetBool("sprinting", false);
