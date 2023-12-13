@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7856302637424760121}
   - component: {fileID: 7363399057656064278}
   m_Layer: 0
-  m_Name: Ground Collider
+  m_Name: Walk Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,6 +121,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5118d8c7a5bf6b34384fc255df8ca607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3729359548907243869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4123487501992480828}
+  - component: {fileID: 700320342690701551}
+  m_Layer: 6
+  m_Name: Lower Legs Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4123487501992480828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3729359548907243869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7801110909436052454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &700320342690701551
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3729359548907243869}
+  m_Material: {fileID: 13400000, guid: 4211b3704af15fb4a9bda0a3fecea670, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.23
+  m_Height: 0.88
+  m_Direction: 0
+  m_Center: {x: 0.09, y: 0, z: 0.15}
 --- !u!1 &4593616873239087119
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,8 +452,9 @@ MonoBehaviour:
     stateName: 
     landingTimeMS: 50
   physics:
-    groundCollider: {fileID: 7363399057656064278}
+    walkCollider: {fileID: 7363399057656064278}
     airColliders:
+    - {fileID: 700320342690701551}
     - {fileID: 7038608029411814655}
     - {fileID: 1304821743594468551}
     - {fileID: 7811102885335842177}
@@ -623,6 +679,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6786897434671940850}
+    - targetCorrespondingSourceObject: {fileID: 400132, guid: af58dc7d0a875334ab3339a086077912,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4123487501992480828}
     - targetCorrespondingSourceObject: {fileID: 400148, guid: af58dc7d0a875334ab3339a086077912,
         type: 3}
       insertIndex: -1
@@ -642,6 +702,12 @@ Transform:
 --- !u!4 &7801110909436052068 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: af58dc7d0a875334ab3339a086077912,
+    type: 3}
+  m_PrefabInstance: {fileID: 7801110909435926754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7801110909436052454 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400132, guid: af58dc7d0a875334ab3339a086077912,
     type: 3}
   m_PrefabInstance: {fileID: 7801110909435926754}
   m_PrefabAsset: {fileID: 0}

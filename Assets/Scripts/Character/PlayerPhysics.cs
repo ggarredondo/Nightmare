@@ -5,7 +5,7 @@ public class PlayerPhysics
 {
     private Transform cameraTransform;
     private Rigidbody rb;
-    [SerializeField] private Collider groundCollider;
+    [SerializeField] private Collider walkCollider;
     [SerializeField] private Collider[] airColliders;
     private float smoothMagnitude = 0f;
 
@@ -57,15 +57,15 @@ public class PlayerPhysics
             rb.AddForce(-rb.velocity.y * Vector3.up * jumpCancelMultiplier, ForceMode.VelocityChange);
     }
 
-    public void SwitchToGroundCollider()
+    public void SwitchToWalkCollider()
     {
-        groundCollider.enabled = true;
+        walkCollider.enabled = true;
         for (int i = 0; i < airColliders.Length; ++i)
             airColliders[i].enabled = false;
     }
     public void SwitchToAirColliders()
     {
-        groundCollider.enabled = false;
+        walkCollider.enabled = false;
         for (int i = 0; i < airColliders.Length; ++i)
             airColliders[i].enabled = true;
     }

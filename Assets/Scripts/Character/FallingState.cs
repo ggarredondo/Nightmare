@@ -23,7 +23,7 @@ public class FallingState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.Physics.SwitchToGroundCollider();
+        stateMachine.Physics.SwitchToWalkCollider();
         stateMachine.GroundDetection.OnLand -= stateMachine.TransitionToLanding;
         stateMachine.Controller.OnReleaseFly -= CancelJump;
         base.Exit();
