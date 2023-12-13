@@ -5,6 +5,7 @@ public class FallingState : PlayerState
 
     public override void Enter()
     {
+        stateMachine.Physics.SwitchToAirColliders();
         stateMachine.GroundDetection.OnLand += stateMachine.TransitionToLanding;
         stateMachine.Controller.OnReleaseFly += CancelJump;
         stateMachine.EnableUpdate(true);
@@ -22,6 +23,7 @@ public class FallingState : PlayerState
 
     public override void Exit()
     {
+        stateMachine.Physics.SwitchToGroundCollider();
         stateMachine.GroundDetection.OnLand -= stateMachine.TransitionToLanding;
         stateMachine.Controller.OnReleaseFly -= CancelJump;
         base.Exit();

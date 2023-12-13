@@ -5,7 +5,8 @@ public class PlayerPhysics
 {
     private Transform cameraTransform;
     private Rigidbody rb;
-    [SerializeField] private Collider col;
+    [SerializeField] private Collider groundCollider;
+    [SerializeField] private Collider[] airColliders;
     private float smoothMagnitude = 0f;
 
     [SerializeField] private float rotationSpeed;
@@ -54,6 +55,19 @@ public class PlayerPhysics
     {
         if (rb.velocity.y > 0f)
             rb.AddForce(-rb.velocity.y * Vector3.up * jumpCancelMultiplier, ForceMode.VelocityChange);
+    }
+
+    public void SwitchToGroundCollider()
+    {
+        groundCollider.enabled = true;
+        for (int i = 0; i < airColliders.Length; ++i)
+            airColliders[i].enabled = false;
+    }
+    public void SwitchToAirColliders()
+    {
+        groundCollider.enabled = false;
+        for (int i = 0; i < airColliders.Length; ++i)
+            airColliders[i].enabled = true;
     }
 
     public void EnableGravity(bool enabled) => rb.useGravity = enabled;

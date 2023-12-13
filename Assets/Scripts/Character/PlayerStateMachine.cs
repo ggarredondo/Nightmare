@@ -7,7 +7,7 @@ public class PlayerStateMachine
     private MonoBehaviour monoBehaviour;
     private PlayerController controller;
     private PlayerPhysics physics;
-    private GroundDetection groundDetection;
+    [SerializeField] private GroundDetection groundDetection;
 
     [SerializeField] [ReadOnlyField] private string stateName;
     [SerializeField] private double landingTimeMS;
@@ -17,10 +17,9 @@ public class PlayerStateMachine
     private FallingState fallingState;
     private LandingState landingState;
 
-    public void Initialize(in MonoBehaviour monoBehaviour, in GroundDetection groundDetection)
+    public void Initialize(in MonoBehaviour monoBehaviour)
     {
         this.monoBehaviour = monoBehaviour;
-        this.groundDetection = groundDetection;
         walkingState = new WalkingState(this);
         fallingState = new FallingState(this);
         landingState = new LandingState(this);
