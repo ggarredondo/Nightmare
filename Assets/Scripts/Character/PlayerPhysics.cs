@@ -57,6 +57,12 @@ public class PlayerPhysics
             rb.AddForce(-rb.velocity.y * Vector3.up * jumpCancelMultiplier, ForceMode.VelocityChange);
     }
 
+    public void CancelFall()
+    {
+        if (rb.velocity.y < 0f)
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+    }
+
     public void SwitchToWalkCollider()
     {
         walkCollider.enabled = true;

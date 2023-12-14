@@ -16,6 +16,7 @@ public class PlayerStateMachine
     private WalkingState walkingState;
     private FallingState fallingState;
     private LandingState landingState;
+    private LevitationState levitationState;
 
     public void Initialize(in MonoBehaviour monoBehaviour)
     {
@@ -23,6 +24,7 @@ public class PlayerStateMachine
         walkingState = new WalkingState(this);
         fallingState = new FallingState(this);
         landingState = new LandingState(this);
+        levitationState = new LevitationState(this);
     }
     public void Reference(in PlayerController controller, in PlayerPhysics physics) 
     {
@@ -41,6 +43,7 @@ public class PlayerStateMachine
     public void TransitionToWalking() => ChangeState(walkingState);
     public void TransitionToFalling() => ChangeState(fallingState);
     public void TransitionToLanding() => ChangeState(landingState);
+    public void TransitionToLevitation() => ChangeState(levitationState);
 
     public void StartCoroutine(in IEnumerator coroutine) => monoBehaviour.StartCoroutine(coroutine);
     public void StopCoroutine(in IEnumerator coroutine) => monoBehaviour.StopCoroutine(coroutine);
@@ -55,4 +58,5 @@ public class PlayerStateMachine
     public ref readonly WalkingState WalkingState => ref walkingState;
     public ref readonly FallingState FallingState => ref fallingState;
     public ref readonly LandingState LandingState => ref landingState;
+    public ref readonly LevitationState LevitationState => ref levitationState;
 }

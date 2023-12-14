@@ -7,8 +7,8 @@ public class FallingState : PlayerState
     {
         stateMachine.Physics.SwitchToAirColliders();
         stateMachine.GroundDetection.OnLand += stateMachine.TransitionToLanding;
-        stateMachine.Controller.OnReleaseFly += CancelJump;
-        stateMachine.EnableUpdate(true);
+        stateMachine.Controller.OnPressFly += stateMachine.TransitionToLevitation;
+        stateMachine.Controller.OnReleaseJump += CancelJump;
         base.Enter();
     }
 
@@ -17,7 +17,7 @@ public class FallingState : PlayerState
 
     public void CancelJump()
     {
-        stateMachine.Controller.OnReleaseFly -= CancelJump;
+        stateMachine.Controller.OnReleaseJump -= CancelJump;
         stateMachine.Physics.CancelJump();
     }
 
@@ -25,7 +25,8 @@ public class FallingState : PlayerState
     {
         stateMachine.Physics.SwitchToWalkCollider();
         stateMachine.GroundDetection.OnLand -= stateMachine.TransitionToLanding;
-        stateMachine.Controller.OnReleaseFly -= CancelJump;
+        stateMachine.Controller.OnPressFly -= stateMachine.TransitionToLevitation;
+        stateMachine.Controller.OnReleaseJump -= CancelJump;
         base.Exit();
     }
 }

@@ -29,6 +29,9 @@ public class PlayerAnimation
         stateMachine.FallingState.OnEnter += () => { animator.applyRootMotion = false; animator.SetBool("STATE_FALLING", true); };
         stateMachine.FallingState.OnExit += () => animator.SetBool("STATE_FALLING", false);
 
+        stateMachine.LevitationState.OnEnter += () => animator.SetBool("STATE_LEVITATION", true);
+        stateMachine.LevitationState.OnExit += () => animator.SetBool("STATE_LEVITATION", false);
+
         PlayerPhysics physicsRef = physics;
         stateMachine.LandingState.OnEnter += () => {
             animator.SetFloat("velocity", physicsRef.Velocity);

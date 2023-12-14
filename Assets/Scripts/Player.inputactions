@@ -24,9 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fly",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "74d87e47-ed45-4bd1-a4bf-df7639dd77de",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fly",
+                    "type": "Button",
+                    "id": "5a1dd1c6-38c4-4d53-9059-17c85ada0456",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -72,7 +81,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Scheme",
-                    "action": "Fly",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -84,6 +93,17 @@
                     "processors": "",
                     "groups": "Scheme",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "722edfb6-5cc4-414c-b667-3077e467d758",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Scheme",
+                    "action": "Fly",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

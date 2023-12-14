@@ -528,7 +528,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2168286633247279865}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: PressFly
+        m_MethodName: PressJump
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -556,6 +556,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6da859c9-d3ff-4bf9-9f1f-971f397fb642
     m_ActionName: Gameplay/Sprint[/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2168286633247279865}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: PressFly
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5a1dd1c6-38c4-4d53-9059-17c85ada0456
+    m_ActionName: Gameplay/Fly[/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
