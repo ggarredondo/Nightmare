@@ -14,8 +14,7 @@ public class LevitationState : PlayerState
     public override void FixedUpdate()
     {
         stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
-        stateMachine.Physics.Gravity();
-        stateMachine.Physics.CancelFall();
+        stateMachine.Physics.Levitate();
     }
 
     public override void Exit()

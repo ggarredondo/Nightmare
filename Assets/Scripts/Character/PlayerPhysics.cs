@@ -67,10 +67,10 @@ public class PlayerPhysics
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
 
-    public void CancelFall()
+    public void Levitate()
     {
-        if (rb.velocity.y < 0f)
-            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (rb.velocity.y > 0f) Gravity();
+        else rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
     }
 
     public void SwitchToWalkCollider()
