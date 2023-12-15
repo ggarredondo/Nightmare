@@ -10,9 +10,8 @@ public class PlayerPhysics
     private float smoothMagnitude = 0f;
 
     [SerializeField] private float gravityScale = 1f;
-    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float groundedRotationSpeed, airborneRotationSpeed;
     [SerializeField] private float magnitudeAcceleration;
-    [SerializeField] private float groundRaycastOffset = 0.1f;
     [SerializeField] private float jumpingImpulse;
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
     [SerializeField] private float airMovementSpeed;
@@ -28,7 +27,7 @@ public class PlayerPhysics
     public event System.Action<float> OnMovement;
     public event System.Action OnJump;
 
-    public void Movement(in Vector2 direction)
+    private void Movement(in Vector2 direction, float rotationSpeed)
     {
         if (direction.magnitude > 0.1f) {
             float targetAngle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
@@ -39,10 +38,11 @@ public class PlayerPhysics
         OnMovement?.Invoke(smoothMagnitude);
     }
 
+    public void GroundMovement(in Vector2 direction) => Movement(direction, groundedRotationSpeed);
     public void AirMovement(in Vector2 direction)
     {
-        Movement(direction);
-        //rb.AddForce(rb.transform.forward * smoothMagnitude * airMovementSpeed, ForceMode.VelocityChange);
+        Movement(direction, airborneRotationSpeed);
+        //rb.position += rb.transform.forward * smoothMagnitude * airMovementSpeed;
     }
 
     public void Jump()

@@ -18,7 +18,7 @@ public class LandingState : PlayerState
     public override void Update() {}
     public override void FixedUpdate()
     {
-        stateMachine.Physics.Movement(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.GroundMovement(stateMachine.Controller.MovementDirection);
         stateMachine.Physics.Gravity();
     }
 

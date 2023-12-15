@@ -459,7 +459,8 @@ MonoBehaviour:
     - {fileID: 1304821743594468551}
     - {fileID: 7811102885335842177}
     gravityScale: 2
-    rotationSpeed: 10
+    groundedRotationSpeed: 10
+    airborneRotationSpeed: 2
     magnitudeAcceleration: 4
     groundRaycastOffset: 0.1
     jumpingImpulse: 7
