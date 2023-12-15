@@ -14,7 +14,6 @@ public class PlayerPhysics
     [SerializeField] private float magnitudeAcceleration;
     [SerializeField] private float jumpingImpulse;
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
-    [SerializeField] private float airMovementSpeed;
 
     public void Initialize(in Rigidbody rb)
     {
@@ -42,7 +41,8 @@ public class PlayerPhysics
     public void AirMovement(in Vector2 direction)
     {
         Movement(direction, airborneRotationSpeed);
-        //rb.position += rb.transform.forward * smoothMagnitude * airMovementSpeed;
+        Vector3 planeVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.velocity = rb.transform.forward * planeVelocity.magnitude + rb.velocity.y * Vector3.up;
     }
 
     public void Jump()
