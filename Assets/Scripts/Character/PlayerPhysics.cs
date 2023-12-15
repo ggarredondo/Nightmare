@@ -9,6 +9,7 @@ public class PlayerPhysics
     [SerializeField] private Collider[] airColliders;
     private float smoothMagnitude = 0f;
 
+    [SerializeField] private float gravityScale = 1f;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float magnitudeAcceleration;
     [SerializeField] private float groundRaycastOffset = 0.1f;
@@ -19,14 +20,13 @@ public class PlayerPhysics
     public void Initialize(in Rigidbody rb)
     {
         this.rb = rb;
+        rb.useGravity = false;
         cameraTransform = Camera.main.transform;
     }
     public void Reference() {}
 
     public event System.Action<float> OnMovement;
     public event System.Action OnJump;
-
-    // Use all following methods in Fixed Update if necessary
 
     public void Movement(in Vector2 direction)
     {
@@ -42,7 +42,7 @@ public class PlayerPhysics
     public void AirMovement(in Vector2 direction)
     {
         Movement(direction);
-        rb.AddForce(rb.transform.forward * smoothMagnitude * airMovementSpeed, ForceMode.VelocityChange);
+        //rb.AddForce(rb.transform.forward * smoothMagnitude * airMovementSpeed, ForceMode.VelocityChange);
     }
 
     public void Jump()
@@ -55,6 +55,16 @@ public class PlayerPhysics
     {
         if (rb.velocity.y > 0f)
             rb.AddForce(-rb.velocity.y * Vector3.up * jumpCancelMultiplier, ForceMode.VelocityChange);
+    }
+
+    /// <summary>
+    /// This function adds physics' default gravity as acceleration to the rigidbody.
+    /// If the player is falling, gravity is scaled for effect.
+    /// </summary>
+    public void Gravity()
+    {
+        Vector3 gravity = rb.velocity.y < 0f ? gravityScale * Physics.gravity : Physics.gravity;
+        rb.AddForce(gravity, ForceMode.Acceleration);
     }
 
     public void CancelFall()
@@ -76,6 +86,5 @@ public class PlayerPhysics
             airColliders[i].enabled = true;
     }
 
-    public void EnableGravity(bool enabled) => rb.useGravity = enabled;
     public float Velocity => new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
 }

@@ -13,7 +13,11 @@ public class FallingState : PlayerState
     }
 
     public override void Update() {}
-    public override void FixedUpdate() => stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
+    public override void FixedUpdate()
+    {
+        stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.Gravity();
+    }
 
     public void CancelJump()
     {
