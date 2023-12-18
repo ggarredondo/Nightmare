@@ -9,7 +9,7 @@ public class LandingState : PlayerState
 
     public override void Enter()
     {
-        stateMachine.GroundDetection.OnTakeOff += stateMachine.TransitionToFalling;
+        stateMachine.CollisionHandler.OnTakeOff += stateMachine.TransitionToFalling;
         coroutine = LandingDelay();
         stateMachine.StartCoroutine(coroutine);
         base.Enter();
@@ -24,7 +24,7 @@ public class LandingState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.GroundDetection.OnTakeOff -= stateMachine.TransitionToFalling;
+        stateMachine.CollisionHandler.OnTakeOff -= stateMachine.TransitionToFalling;
         stateMachine.StopCoroutine(coroutine);
         base.Exit();
     }

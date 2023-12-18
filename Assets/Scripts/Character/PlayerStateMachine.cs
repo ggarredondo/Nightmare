@@ -7,7 +7,7 @@ public class PlayerStateMachine
     private MonoBehaviour monoBehaviour;
     private PlayerController controller;
     private PlayerPhysics physics;
-    [SerializeField] private GroundDetection groundDetection;
+    [SerializeField] private CollisionHandler collisionHandler;
 
     [SerializeField] [ReadOnlyField] private string stateName;
     [SerializeField] private double landingTimeMS;
@@ -49,7 +49,7 @@ public class PlayerStateMachine
     public void StopCoroutine(in IEnumerator coroutine) => monoBehaviour.StopCoroutine(coroutine);
     public void EnableUpdate(bool enabled) => monoBehaviour.enabled = enabled;
 
-    public ref readonly GroundDetection GroundDetection => ref groundDetection;
+    public ref readonly CollisionHandler CollisionHandler => ref collisionHandler;
     public ref readonly PlayerController Controller => ref controller;
     public ref readonly PlayerPhysics Physics => ref physics;
     public double LandingTimeMS => landingTimeMS;

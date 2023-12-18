@@ -5,7 +5,7 @@ public class WalkingState : PlayerState
 
     public override void Enter()
     {
-        stateMachine.GroundDetection.OnTakeOff += stateMachine.TransitionToFalling;
+        stateMachine.CollisionHandler.OnTakeOff += stateMachine.TransitionToFalling;
         stateMachine.Controller.OnPressJump += Jump;
         base.Enter();
     }
@@ -19,7 +19,7 @@ public class WalkingState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.GroundDetection.OnTakeOff -= stateMachine.TransitionToFalling;
+        stateMachine.CollisionHandler.OnTakeOff -= stateMachine.TransitionToFalling;
         stateMachine.Controller.OnPressJump -= Jump;
         base.Exit();
     }

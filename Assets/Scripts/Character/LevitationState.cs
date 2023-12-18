@@ -5,7 +5,7 @@ public class LevitationState : PlayerState
 
     public override void Enter()
     {
-        stateMachine.GroundDetection.OnLand += stateMachine.TransitionToLanding;
+        stateMachine.CollisionHandler.OnLand += stateMachine.TransitionToLanding;
         stateMachine.Controller.OnReleaseFly += stateMachine.TransitionToFalling;
         base.Enter();
     }
@@ -19,7 +19,7 @@ public class LevitationState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.GroundDetection.OnLand -= stateMachine.TransitionToLanding;
+        stateMachine.CollisionHandler.OnLand -= stateMachine.TransitionToLanding;
         stateMachine.Controller.OnReleaseFly -= stateMachine.TransitionToFalling;
         base.Exit();
     }
