@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 244980642042546810}
   - component: {fileID: 1972781996542540386}
   - component: {fileID: 2168286633247279865}
+  - component: {fileID: 2520353060762170984}
   - component: {fileID: 1854967389247350471}
   - component: {fileID: 4226347896094999792}
   m_Layer: 0
@@ -462,7 +463,7 @@ MonoBehaviour:
     groundedRotationSpeed: 10
     airborneRotationSpeed: 2
     magnitudeAcceleration: 4
-    jumpingImpulse: 8
+    jumpingImpulse: 7
     jumpCancelMultiplier: 0.5
   playerAnimation:
     animationSpeed: 1
@@ -478,6 +479,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba50bed95d0cf248845829e3e709f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2520353060762170984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7909303862107862499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103cb74ac0ca10d43abceb629b316190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 2
 --- !u!114 &1854967389247350471
 MonoBehaviour:
   m_ObjectHideFlags: 0
