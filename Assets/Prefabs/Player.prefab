@@ -462,10 +462,8 @@ MonoBehaviour:
     groundedRotationSpeed: 10
     airborneRotationSpeed: 2
     magnitudeAcceleration: 4
-    groundRaycastOffset: 0.1
-    jumpingImpulse: 7
+    jumpingImpulse: 8
     jumpCancelMultiplier: 0.5
-    airMovementSpeed: 0.1
   playerAnimation:
     animationSpeed: 1
 --- !u!114 &2168286633247279865
