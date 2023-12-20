@@ -392,7 +392,7 @@ MonoBehaviour:
     - {fileID: 7811102885335842177}
     gravityScale: 2
     groundedRotationSpeed: 10
-    airborneRotationSpeed: 2
+    airborneRotationSpeed: 1
     magnitudeAcceleration: 4
     jumpingImpulse: 7
     airJumpingImpulse: 4
