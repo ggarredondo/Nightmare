@@ -7,7 +7,7 @@ public class PlayerStateMachine
     private MonoBehaviour monoBehaviour;
     private PlayerController controller;
     private PlayerPhysics physics;
-    [SerializeField] private CollisionHandler collisionHandler;
+    private CollisionHandler collisionHandler;
 
     [SerializeField] [ReadOnlyField] private string stateName;
     [SerializeField] private double landingTimeMS;
@@ -18,9 +18,10 @@ public class PlayerStateMachine
     private LandingState landingState;
     private LevitationState levitationState;
 
-    public void Initialize(in MonoBehaviour monoBehaviour)
+    public void Initialize(in MonoBehaviour monoBehaviour, in CollisionHandler collisionHandler)
     {
         this.monoBehaviour = monoBehaviour;
+        this.collisionHandler = collisionHandler;
         walkingState = new WalkingState(this);
         fallingState = new FallingState(this);
         landingState = new LandingState(this);
