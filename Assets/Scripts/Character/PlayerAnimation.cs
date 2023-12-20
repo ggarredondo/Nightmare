@@ -23,7 +23,7 @@ public class PlayerAnimation
             animator.SetTrigger("jump");
         };
 
-        stateMachine.WalkingState.OnEnter += () => animator.SetBool("STATE_WALKING", true);
+        stateMachine.WalkingState.OnEnter += () => { animator.applyRootMotion = true; animator.SetBool("STATE_WALKING", true); };
         stateMachine.WalkingState.OnExit += () => animator.SetBool("STATE_WALKING", false);
 
         stateMachine.FallingState.OnEnter += () => { animator.applyRootMotion = false; animator.SetBool("STATE_FALLING", true); };
@@ -35,10 +35,8 @@ public class PlayerAnimation
         PlayerPhysics physicsRef = physics;
         stateMachine.LandingState.OnEnter += () => {
             animator.SetFloat("velocity", physicsRef.Velocity);
-            animator.applyRootMotion = true;
-            animator.SetBool("STATE_LANDING", true);
+            animator.SetTrigger("land");
         };
-        stateMachine.LandingState.OnExit += () => animator.SetBool("STATE_LANDING", false);
     }
 
     public void OnValidate() { if (animator) animator.speed = animationSpeed; }

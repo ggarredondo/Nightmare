@@ -2,7 +2,7 @@ using System;
 
 public abstract class PlayerState 
 {
-    protected string stateName;
+    protected readonly string stateName;
     protected readonly PlayerStateMachine stateMachine;
     public event Action OnEnter, OnExit;
 

@@ -8,9 +8,9 @@ public class PlayerStateMachine
     private PlayerController controller;
     private PlayerPhysics physics;
     private CollisionHandler collisionHandler;
+    private AnimationEventHandler animationEventHandler;
 
     [SerializeField] [ReadOnlyField] private string stateName;
-    [SerializeField] private double landingTimeMS;
 
     private PlayerState currentState;
     private WalkingState walkingState;
@@ -18,10 +18,12 @@ public class PlayerStateMachine
     private LandingState landingState;
     private LevitationState levitationState;
 
-    public void Initialize(in MonoBehaviour monoBehaviour, in CollisionHandler collisionHandler)
+    public void Initialize(in MonoBehaviour monoBehaviour, in CollisionHandler collisionHandler, 
+        in AnimationEventHandler animationEventHandler)
     {
         this.monoBehaviour = monoBehaviour;
         this.collisionHandler = collisionHandler;
+        this.animationEventHandler = animationEventHandler;
         walkingState = new WalkingState(this);
         fallingState = new FallingState(this);
         landingState = new LandingState(this);
@@ -50,10 +52,10 @@ public class PlayerStateMachine
     public void StopCoroutine(in IEnumerator coroutine) => monoBehaviour.StopCoroutine(coroutine);
     public void EnableUpdate(bool enabled) => monoBehaviour.enabled = enabled;
 
-    public ref readonly CollisionHandler CollisionHandler => ref collisionHandler;
     public ref readonly PlayerController Controller => ref controller;
     public ref readonly PlayerPhysics Physics => ref physics;
-    public double LandingTimeMS => landingTimeMS;
+    public ref readonly CollisionHandler CollisionHandler => ref collisionHandler;
+    public ref readonly AnimationEventHandler AnimationEventHandler => ref animationEventHandler;
 
     public ref readonly PlayerState CurrentState => ref currentState;
     public ref readonly WalkingState WalkingState => ref walkingState;
