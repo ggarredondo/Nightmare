@@ -5,6 +5,7 @@ public class LevitationState : PlayerState
 
     public override void Enter()
     {
+        stateMachine.AirJump();
         stateMachine.Controller.OnReleaseFly += stateMachine.TransitionToFalling;
         base.Enter();
     }

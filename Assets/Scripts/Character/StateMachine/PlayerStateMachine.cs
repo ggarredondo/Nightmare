@@ -39,6 +39,16 @@ public class PlayerStateMachine
     public void TransitionToFalling() => ChangeState(fallingState);
     public void TransitionToLevitation() => ChangeState(levitationState);
 
+    private bool enableAirJump = true;
+    public void AirJump()
+    {
+        if (enableAirJump) {
+            physics.AirJump();
+            enableAirJump = false;
+        }
+    }
+    public void ResetAirJump() => enableAirJump = true;
+
     public ref readonly PlayerController Controller => ref controller;
     public ref readonly PlayerPhysics Physics => ref physics;
     public ref readonly CollisionHandler CollisionHandler => ref collisionHandler;
