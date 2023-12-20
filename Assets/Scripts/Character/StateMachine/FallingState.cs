@@ -1,12 +1,13 @@
 
 public class FallingState : PlayerState
 {
+    public event System.Action OnLand;
     public FallingState(in PlayerStateMachine stateMachine) : base("FALLING", stateMachine) {}
 
     public override void Enter()
     {
         stateMachine.Physics.SwitchToAirColliders();
-        stateMachine.CollisionHandler.OnLand += stateMachine.TransitionToLanding;
+        stateMachine.CollisionHandler.OnLand += Land;
         stateMachine.Controller.OnPressFly += stateMachine.TransitionToLevitation;
         stateMachine.Controller.OnReleaseJump += CancelJump;
         base.Enter();
@@ -28,9 +29,15 @@ public class FallingState : PlayerState
     public override void Exit()
     {
         stateMachine.Physics.SwitchToWalkCollider();
-        stateMachine.CollisionHandler.OnLand -= stateMachine.TransitionToLanding;
+        stateMachine.CollisionHandler.OnLand -= Land;
         stateMachine.Controller.OnPressFly -= stateMachine.TransitionToLevitation;
         stateMachine.Controller.OnReleaseJump -= CancelJump;
         base.Exit();
+    }
+
+    private void Land()
+    {
+        stateMachine.TransitionToWalking();
+        OnLand?.Invoke();
     }
 }

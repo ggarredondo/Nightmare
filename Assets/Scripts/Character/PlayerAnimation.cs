@@ -16,27 +16,26 @@ public class PlayerAnimation
 
         PlayerController controllerRef = controller;
         physics.OnJump += () => {
-            animator.applyRootMotion = false;
             Vector2 normalized = controllerRef.MovementDirection.normalized;
             animator.SetFloat("horizontal", Mathf.Round(normalized.x));
             animator.SetFloat("vertical", Mathf.Round(normalized.y));
             animator.SetTrigger("jump");
         };
 
-        stateMachine.WalkingState.OnEnter += () => { animator.applyRootMotion = true; animator.SetBool("STATE_WALKING", true); };
+        stateMachine.WalkingState.OnEnter += () => animator.SetBool("STATE_WALKING", true);
         stateMachine.WalkingState.OnExit += () => animator.SetBool("STATE_WALKING", false);
 
-        stateMachine.FallingState.OnEnter += () => { animator.applyRootMotion = false; animator.SetBool("STATE_FALLING", true); };
+        stateMachine.FallingState.OnEnter += () => animator.SetBool("STATE_FALLING", true);
         stateMachine.FallingState.OnExit += () => animator.SetBool("STATE_FALLING", false);
 
-        stateMachine.LevitationState.OnEnter += () => animator.SetBool("STATE_LEVITATION", true);
-        stateMachine.LevitationState.OnExit += () => animator.SetBool("STATE_LEVITATION", false);
-
         PlayerPhysics physicsRef = physics;
-        stateMachine.LandingState.OnEnter += () => {
+        stateMachine.FallingState.OnLand += () => {
             animator.SetFloat("velocity", physicsRef.Velocity);
             animator.SetTrigger("land");
         };
+
+        stateMachine.LevitationState.OnEnter += () => animator.SetBool("STATE_LEVITATION", true);
+        stateMachine.LevitationState.OnExit += () => animator.SetBool("STATE_LEVITATION", false);
     }
 
     public void OnValidate() { if (animator) animator.speed = animationSpeed; }

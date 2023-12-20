@@ -34,16 +34,13 @@ public class PlayerPhysics
             rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
         smoothMagnitude = Mathf.Lerp(smoothMagnitude, direction.magnitude, magnitudeAcceleration * Time.fixedDeltaTime);
+        Vector3 planeVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.velocity = rb.transform.forward * planeVelocity.magnitude + rb.velocity.y * Vector3.up;
         OnMovement?.Invoke(smoothMagnitude);
     }
 
     public void GroundMovement(in Vector2 direction) => Movement(direction, groundedRotationSpeed);
-    public void AirMovement(in Vector2 direction)
-    {
-        Movement(direction, airborneRotationSpeed);
-        Vector3 planeVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.velocity = rb.transform.forward * planeVelocity.magnitude + rb.velocity.y * Vector3.up;
-    }
+    public void AirMovement(in Vector2 direction) => Movement(direction, airborneRotationSpeed);
 
     public void Jump()
     {

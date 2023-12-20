@@ -318,7 +318,6 @@ GameObject:
   - component: {fileID: 5168358889858318095}
   - component: {fileID: 244980642042546810}
   - component: {fileID: 1972781996542540386}
-  - component: {fileID: 5219303260361489940}
   - component: {fileID: 2168286633247279865}
   - component: {fileID: 2520353060762170984}
   - component: {fileID: 1854967389247350471}
@@ -384,7 +383,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateMachine:
     stateName: 
-    landingTimeMS: 50
   physics:
     walkCollider: {fileID: 7363399057656064278}
     airColliders:
@@ -400,18 +398,6 @@ MonoBehaviour:
     jumpCancelMultiplier: 0.5
   playerAnimation:
     animationSpeed: 1
---- !u!114 &5219303260361489940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7909303862107862499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751f8441856b6574dbcb1a1ff4b0dd65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2168286633247279865
 MonoBehaviour:
   m_ObjectHideFlags: 0
