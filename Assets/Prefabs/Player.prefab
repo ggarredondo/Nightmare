@@ -395,6 +395,7 @@ MonoBehaviour:
     airborneRotationSpeed: 2
     magnitudeAcceleration: 4
     jumpingImpulse: 7
+    airJumpingImpulse: 4
     jumpCancelMultiplier: 0.5
   playerAnimation:
     animationSpeed: 1

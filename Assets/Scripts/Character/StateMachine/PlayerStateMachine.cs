@@ -1,14 +1,11 @@
-using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
 public class PlayerStateMachine
 {
-    private MonoBehaviour monoBehaviour;
     private PlayerController controller;
     private PlayerPhysics physics;
     private CollisionHandler collisionHandler;
-    private AnimationEventHandler animationEventHandler;
 
     [SerializeField] [ReadOnlyField] private string stateName;
 
@@ -17,12 +14,9 @@ public class PlayerStateMachine
     private FallingState fallingState;
     private LevitationState levitationState;
 
-    public void Initialize(in MonoBehaviour monoBehaviour, in CollisionHandler collisionHandler, 
-        in AnimationEventHandler animationEventHandler)
+    public void Initialize(in CollisionHandler collisionHandler)
     {
-        this.monoBehaviour = monoBehaviour;
         this.collisionHandler = collisionHandler;
-        this.animationEventHandler = animationEventHandler;
         walkingState = new WalkingState(this);
         fallingState = new FallingState(this);
         levitationState = new LevitationState(this);
@@ -45,14 +39,9 @@ public class PlayerStateMachine
     public void TransitionToFalling() => ChangeState(fallingState);
     public void TransitionToLevitation() => ChangeState(levitationState);
 
-    public void StartCoroutine(in IEnumerator coroutine) => monoBehaviour.StartCoroutine(coroutine);
-    public void StopCoroutine(in IEnumerator coroutine) => monoBehaviour.StopCoroutine(coroutine);
-    public void EnableUpdate(bool enabled) => monoBehaviour.enabled = enabled;
-
     public ref readonly PlayerController Controller => ref controller;
     public ref readonly PlayerPhysics Physics => ref physics;
     public ref readonly CollisionHandler CollisionHandler => ref collisionHandler;
-    public ref readonly AnimationEventHandler AnimationEventHandler => ref animationEventHandler;
 
     public ref readonly PlayerState CurrentState => ref currentState;
     public ref readonly WalkingState WalkingState => ref walkingState;

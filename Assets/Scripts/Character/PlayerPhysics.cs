@@ -13,6 +13,7 @@ public class PlayerPhysics
     [SerializeField] private float groundedRotationSpeed, airborneRotationSpeed;
     [SerializeField] private float magnitudeAcceleration;
     [SerializeField] private float jumpingImpulse;
+    [SerializeField] private float airJumpingImpulse;
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
 
     public void Initialize(in Rigidbody rb)
@@ -47,6 +48,7 @@ public class PlayerPhysics
         rb.AddForce(Vector3.up * jumpingImpulse, ForceMode.Impulse);
         OnJump?.Invoke();
     }
+    public void AirJump() => rb.AddForce(Vector3.up * airJumpingImpulse, ForceMode.Impulse);
 
     public void CancelJump()
     {

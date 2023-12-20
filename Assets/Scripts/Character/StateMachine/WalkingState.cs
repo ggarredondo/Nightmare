@@ -5,6 +5,7 @@ public class WalkingState : PlayerState
 
     public override void Enter()
     {
+        stateMachine.Physics.SwitchToWalkCollider();
         stateMachine.CollisionHandler.OnTakeOff += stateMachine.TransitionToFalling;
         stateMachine.Controller.OnPressJump += Jump;
         base.Enter();

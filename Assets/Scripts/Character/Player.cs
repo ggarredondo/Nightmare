@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     {
         controller = GetComponent<PlayerController>();
         controller.Initialize();
-        stateMachine.Initialize(this, GetComponent<CollisionHandler>(), GetComponent<AnimationEventHandler>());
+        stateMachine.Initialize(GetComponent<CollisionHandler>());
         physics.Initialize(GetComponent<Rigidbody>());
         playerAnimation.Initialize(GetComponent<Animator>());
     }

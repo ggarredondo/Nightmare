@@ -28,7 +28,6 @@ public class FallingState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.Physics.SwitchToWalkCollider();
         stateMachine.CollisionHandler.OnLand -= Land;
         stateMachine.Controller.OnPressFly -= stateMachine.TransitionToLevitation;
         stateMachine.Controller.OnReleaseJump -= CancelJump;

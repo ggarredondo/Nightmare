@@ -34,7 +34,10 @@ public class PlayerAnimation
             animator.SetTrigger("land");
         };
 
-        stateMachine.LevitationState.OnEnter += () => animator.SetBool("STATE_LEVITATION", true);
+        stateMachine.LevitationState.OnEnter += () => {
+            animator.SetTrigger("levitate");
+            animator.SetBool("STATE_LEVITATION", true);
+        };
         stateMachine.LevitationState.OnExit += () => animator.SetBool("STATE_LEVITATION", false);
     }
 
