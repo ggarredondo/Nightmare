@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
     }
     public void PressThrust(InputAction.CallbackContext context)
     {
-        //if (context.performed) OnPressThrust?.Invoke();
-        //else if (context.canceled) OnReleaseThrust?.Invoke();
+        if (context.performed) OnPressThrust?.Invoke();
+        else if (context.canceled) OnReleaseThrust?.Invoke();
     }
 
     public ref readonly Vector2 MovementDirection => ref movementDirection;
