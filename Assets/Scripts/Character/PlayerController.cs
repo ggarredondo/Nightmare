@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed) OnPressThrust?.Invoke();
         else if (context.canceled) OnReleaseThrust?.Invoke();
     }
+    public void PressPause(InputAction.CallbackContext context) => Time.timeScale = Time.timeScale == 0f ? 1f : 0f;
 
     public ref readonly Vector2 MovementDirection => ref movementDirection;
 }

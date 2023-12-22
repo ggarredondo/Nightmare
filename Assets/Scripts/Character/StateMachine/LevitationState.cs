@@ -1,7 +1,10 @@
+using UnityEngine;
 
+[System.Serializable]
 public class LevitationState : PlayerState
 {
-    public LevitationState(in PlayerStateMachine stateMachine) : base("LEVITATION", stateMachine) {}
+    [SerializeField] private float rotationSpeed;
+    public void Initialize(in PlayerStateMachine stateMachine) => base.Initialize("LEVITATION", stateMachine);
 
     public override void Enter()
     {
@@ -12,7 +15,12 @@ public class LevitationState : PlayerState
     }
 
     public override void Update() {}
-    public override void FixedUpdate() => stateMachine.Physics.Levitate();
+    public override void FixedUpdate()
+    {
+        stateMachine.Physics.RotateRelativeToCamera(stateMachine.Controller.MovementDirection, rotationSpeed);
+        stateMachine.Physics.RedirectVelocity();
+        stateMachine.Physics.Levitate();
+    }
 
     public override void Exit()
     {

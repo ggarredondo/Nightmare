@@ -8,20 +8,20 @@ public class PlayerStateMachine
     private CollisionHandler collisionHandler;
 
     [SerializeField] [ReadOnlyField] private string currentStateName;
-
+    
     private PlayerState currentState;
-    private WalkingState walkingState;
-    private FallingState fallingState;
-    private LevitationState levitationState;
-    private ThrustingState thrustingState;
+    [SerializeField] private WalkingState walkingState;
+    [SerializeField] private FallingState fallingState;
+    [SerializeField] private LevitationState levitationState;
+    [SerializeField] private ThrustingState thrustingState;
 
     public void Initialize(in CollisionHandler collisionHandler)
     {
         this.collisionHandler = collisionHandler;
-        walkingState = new WalkingState(this);
-        fallingState = new FallingState(this);
-        levitationState = new LevitationState(this);
-        thrustingState = new ThrustingState(this);
+        walkingState.Initialize(this);
+        fallingState.Initialize(this);
+        levitationState.Initialize(this);
+        thrustingState.Initialize(this);
     }
     public void Reference(in PlayerController controller, in PlayerPhysics physics) 
     {

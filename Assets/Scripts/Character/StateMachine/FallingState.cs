@@ -1,8 +1,12 @@
+using UnityEngine;
 
+[System.Serializable]
 public class FallingState : PlayerState
 {
+    [SerializeField] private float rotationSpeed;
+
     public event System.Action OnLand;
-    public FallingState(in PlayerStateMachine stateMachine) : base("FALLING", stateMachine) {}
+    public void Initialize(in PlayerStateMachine stateMachine) => base.Initialize("FALLING", stateMachine);
 
     public override void Enter()
     {
@@ -17,7 +21,7 @@ public class FallingState : PlayerState
     public override void Update() {}
     public override void FixedUpdate()
     {
-        stateMachine.Physics.RotatePlayerAir(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.RotateRelativeToCamera(stateMachine.Controller.MovementDirection, rotationSpeed);
         stateMachine.Physics.RedirectVelocity();
         stateMachine.Physics.Gravity();
     }

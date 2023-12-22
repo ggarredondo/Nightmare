@@ -1,7 +1,10 @@
+using UnityEngine;
 
+[System.Serializable]
 public class ThrustingState : PlayerState
 {
-    public ThrustingState(in PlayerStateMachine stateMachine) : base("THRUSTING", stateMachine) {}
+    [SerializeField] private float rotationSpeed;
+    public void Initialize(in PlayerStateMachine stateMachine) => base.Initialize("THRUSTING", stateMachine);
 
     public override void Enter()
     {
@@ -11,7 +14,13 @@ public class ThrustingState : PlayerState
     }
 
     public override void Update() {}
-    public override void FixedUpdate() => stateMachine.Physics.Thrust();
+    public override void FixedUpdate() 
+    { 
+        stateMachine.Physics.Thrust();
+        stateMachine.Physics.MatchCameraRotation(rotationSpeed);
+        // or stateMachine.Physics.RotateRelativeToCamera(stateMachine.Controller.MovementDirection, rotationSpeed);
+    }
+
 
     public override void Exit()
     {

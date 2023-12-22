@@ -1,7 +1,10 @@
+using UnityEngine;
 
+[System.Serializable]
 public class WalkingState : PlayerState
 {
-    public WalkingState(in PlayerStateMachine stateMachine) : base("WALKING", stateMachine) {}
+    [SerializeField] private float rotationSpeed;
+    public void Initialize(in PlayerStateMachine stateMachine) => base.Initialize("WALKING", stateMachine);
 
     public override void Enter()
     {
@@ -15,7 +18,7 @@ public class WalkingState : PlayerState
     public override void Update() => stateMachine.Controller.UpdateMagnitude();
     public override void FixedUpdate()
     {
-        stateMachine.Physics.RotatePlayerGround(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.RotateRelativeToCamera(stateMachine.Controller.MovementDirection, rotationSpeed);
         stateMachine.Physics.RedirectVelocity();
         stateMachine.Physics.Gravity();
     }

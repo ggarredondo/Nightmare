@@ -10,7 +10,6 @@ public class PlayerPhysics
 
     [SerializeField] private float gravityScale = 1f;
     [SerializeField] private float maxLinearVelocity;
-    [SerializeField] private float groundedRotationSpeed, airborneRotationSpeed;
     [SerializeField] private float jumpingImpulse;
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
     [SerializeField] private float airJumpingImpulse;
@@ -24,11 +23,8 @@ public class PlayerPhysics
         cameraTransform = Camera.main.transform;
     }
     public void Reference() {}
-    public void OnValidate() => rb.maxLinearVelocity = this.maxLinearVelocity;
 
-    public event System.Action OnJump;
-
-    private void RotatePlayer(in Vector2 direction, float rotationSpeed)
+    public void RotateRelativeToCamera(in Vector2 direction, float rotationSpeed)
     {
         if (direction.magnitude > 0.1f) {
             float targetAngle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
@@ -36,8 +32,12 @@ public class PlayerPhysics
             rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
-    public void RotatePlayerGround(in Vector2 direction) => RotatePlayer(direction, groundedRotationSpeed);
-    public void RotatePlayerAir(in Vector2 direction) => RotatePlayer(direction, airborneRotationSpeed);
+
+    public void MatchCameraRotation(float rotationSpeed)
+    {
+        Quaternion targetRotation = Quaternion.Euler(0f, cameraTransform.rotation.eulerAngles.y, 0f);
+        rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+    }
 
     public void RedirectVelocity()
     {
@@ -45,11 +45,13 @@ public class PlayerPhysics
         rb.velocity = rb.transform.forward * planeVelocity.magnitude + rb.velocity.y * Vector3.up;
     }
 
+    public event System.Action OnJump;
     public void Jump()
     {
         rb.AddForce(Vector3.up * jumpingImpulse, ForceMode.Impulse);
         OnJump?.Invoke();
     }
+
     public void AirJump() => rb.AddForce(Vector3.up * airJumpingImpulse, ForceMode.Impulse);
 
     public void CancelJump()

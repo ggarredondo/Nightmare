@@ -2,11 +2,11 @@ using System;
 
 public abstract class PlayerState 
 {
-    protected readonly string stateName;
-    protected readonly PlayerStateMachine stateMachine;
+    protected string stateName;
+    [System.NonSerialized] protected PlayerStateMachine stateMachine;
     public event Action OnEnter, OnExit;
 
-    public PlayerState(in string stateName, in PlayerStateMachine stateMachine)
+    protected void Initialize(in string stateName, in PlayerStateMachine stateMachine) 
     {
         this.stateName = stateName;
         this.stateMachine = stateMachine;
