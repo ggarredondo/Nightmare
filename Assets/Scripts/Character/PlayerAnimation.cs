@@ -11,9 +11,6 @@ public class PlayerAnimation
     {
         controller.OnUpdateMagnitude += (float magnitude) => animator.SetFloat("magnitude", magnitude);
 
-        controller.OnPressSprint += () => animator.SetBool("sprinting", true);
-        controller.OnReleaseSprint += () => animator.SetBool("sprinting", false);
-
         PlayerController controllerRef = controller;
         physics.OnJump += () => {
             Vector2 normalized = controllerRef.MovementDirection.normalized;

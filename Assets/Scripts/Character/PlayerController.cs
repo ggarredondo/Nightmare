@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movementDirection;
     public event System.Action<float> OnUpdateMagnitude;
-    public event System.Action OnPressSprint, OnReleaseSprint;
     public event System.Action OnPressJump, OnReleaseJump;
     public event System.Action OnPressLevitate, OnReleaseLevitate;
     public event System.Action OnPressThrust, OnReleaseThrust;
@@ -21,12 +20,6 @@ public class PlayerController : MonoBehaviour
     {
         smoothMagnitude = Mathf.Lerp(smoothMagnitude, movementDirection.magnitude, magnitudeAcceleration * Time.deltaTime);
         OnUpdateMagnitude?.Invoke(smoothMagnitude);
-    }
-
-    public void PressSprint(InputAction.CallbackContext context)
-    {
-        if (context.performed) OnPressSprint?.Invoke();
-        else if (context.canceled) OnReleaseSprint?.Invoke();
     }
 
     public void PressJump(InputAction.CallbackContext context)
