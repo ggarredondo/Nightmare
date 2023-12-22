@@ -8,7 +8,8 @@ public class FallingState : PlayerState
     {
         stateMachine.Physics.SwitchToAirColliders();
         stateMachine.CollisionHandler.OnLand += Land;
-        stateMachine.Controller.OnPressFly += stateMachine.TransitionToLevitation;
+        stateMachine.Controller.OnPressLevitate += stateMachine.TransitionToLevitation;
+        stateMachine.Controller.OnPressThrust += stateMachine.TransitionToThrusting;
         stateMachine.Controller.OnReleaseJump += CancelJump;
         base.Enter();
     }
@@ -29,7 +30,8 @@ public class FallingState : PlayerState
     public override void Exit()
     {
         stateMachine.CollisionHandler.OnLand -= Land;
-        stateMachine.Controller.OnPressFly -= stateMachine.TransitionToLevitation;
+        stateMachine.Controller.OnPressLevitate -= stateMachine.TransitionToLevitation;
+        stateMachine.Controller.OnPressThrust -= stateMachine.TransitionToThrusting;
         stateMachine.Controller.OnReleaseJump -= CancelJump;
         base.Exit();
     }

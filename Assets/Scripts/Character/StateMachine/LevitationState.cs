@@ -6,7 +6,8 @@ public class LevitationState : PlayerState
     public override void Enter()
     {
         stateMachine.AirJump();
-        stateMachine.Controller.OnReleaseFly += stateMachine.TransitionToFalling;
+        stateMachine.Controller.OnReleaseLevitate += stateMachine.TransitionToFalling;
+        stateMachine.Controller.OnPressThrust += stateMachine.TransitionToThrusting;
         base.Enter();
     }
 
@@ -19,7 +20,8 @@ public class LevitationState : PlayerState
 
     public override void Exit()
     {
-        stateMachine.Controller.OnReleaseFly -= stateMachine.TransitionToFalling;
+        stateMachine.Controller.OnReleaseLevitate -= stateMachine.TransitionToFalling;
+        stateMachine.Controller.OnPressThrust -= stateMachine.TransitionToThrusting;
         base.Exit();
     }
 }

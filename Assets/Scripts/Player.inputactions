@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Fly",
+                    "name": "Levitate",
                     "type": "Button",
                     "id": "5a1dd1c6-38c4-4d53-9059-17c85ada0456",
                     "expectedControlType": "Button",
@@ -45,6 +45,15 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "6da859c9-d3ff-4bf9-9f1f-971f397fb642",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Thrust",
+                    "type": "Button",
+                    "id": "16c58c0d-1b55-455d-abf5-4244d4343de4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -103,7 +112,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Scheme",
-                    "action": "Fly",
+                    "action": "Levitate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86338f47-e63d-4170-88ff-76300da87c9d",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Scheme",
+                    "action": "Thrust",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

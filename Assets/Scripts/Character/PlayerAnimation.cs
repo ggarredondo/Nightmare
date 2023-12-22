@@ -39,6 +39,9 @@ public class PlayerAnimation
             animator.SetBool("STATE_LEVITATION", true);
         };
         stateMachine.LevitationState.OnExit += () => animator.SetBool("STATE_LEVITATION", false);
+
+        stateMachine.ThrustingState.OnEnter += () => animator.SetBool("STATE_THRUSTING", true);
+        stateMachine.ThrustingState.OnExit += () => animator.SetBool("STATE_THRUSTING", false);
     }
 
     public void OnValidate() { if (animator) animator.speed = animationSpeed; }

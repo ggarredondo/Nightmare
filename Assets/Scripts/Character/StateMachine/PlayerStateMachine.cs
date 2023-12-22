@@ -13,6 +13,7 @@ public class PlayerStateMachine
     private WalkingState walkingState;
     private FallingState fallingState;
     private LevitationState levitationState;
+    private ThrustingState thrustingState;
 
     public void Initialize(in CollisionHandler collisionHandler)
     {
@@ -20,6 +21,7 @@ public class PlayerStateMachine
         walkingState = new WalkingState(this);
         fallingState = new FallingState(this);
         levitationState = new LevitationState(this);
+        thrustingState = new ThrustingState(this);
     }
     public void Reference(in PlayerController controller, in PlayerPhysics physics) 
     {
@@ -38,6 +40,7 @@ public class PlayerStateMachine
     public void TransitionToWalking() => ChangeState(walkingState);
     public void TransitionToFalling() => ChangeState(fallingState);
     public void TransitionToLevitation() => ChangeState(levitationState);
+    public void TransitionToThrusting() => ChangeState(thrustingState);
 
     private bool enableAirJump = true;
     public void AirJump()
@@ -57,4 +60,5 @@ public class PlayerStateMachine
     public ref readonly WalkingState WalkingState => ref walkingState;
     public ref readonly FallingState FallingState => ref fallingState;
     public ref readonly LevitationState LevitationState => ref levitationState;
+    public ref readonly ThrustingState ThrustingState => ref thrustingState;
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1156136446250715026}
   - component: {fileID: 8752998707012471802}
-  - component: {fileID: 1292937662865047247}
   - component: {fileID: 117757358980837668}
   - component: {fileID: 3830845746164320388}
   m_Layer: 0
@@ -69,7 +68,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60.000004
+  field of view: 80
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -87,14 +86,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1292937662865047247
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955696115495394531}
-  m_Enabled: 1
 --- !u!114 &117757358980837668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: -0.71, z: -4.5}
+  m_FollowOffset: {x: 0, y: -3.2, z: -3.18}
   m_XDamping: 1
   m_YDamping: 5
   m_ZDamping: 1
@@ -378,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: -0.71, z: -4.5}
+  m_FollowOffset: {x: 0, y: -3.2, z: -3.18}
   m_XDamping: 1
   m_YDamping: 5
   m_ZDamping: 1
@@ -523,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: -0.71, z: -4.5}
+  m_FollowOffset: {x: 0, y: -3.2, z: -3.18}
   m_XDamping: 1
   m_YDamping: 5
   m_ZDamping: 1
@@ -699,6 +690,7 @@ GameObject:
   - component: {fileID: 882267959364105090}
   - component: {fileID: 1389287022097134500}
   - component: {fileID: 277757082169527962}
+  - component: {fileID: 3753560354616079904}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -818,12 +810,12 @@ MonoBehaviour:
   m_BindingMode: 0
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 4.5
-    m_Radius: 1.75
-  - m_Height: 2.5
+  - m_Height: 3.95
+    m_Radius: 0.18
+  - m_Height: 0.93
     m_Radius: 3
-  - m_Height: -0.71
-    m_Radius: 4.5
+  - m_Height: -3.2
+    m_Radius: 3.18
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 3651712817418165257}
@@ -861,6 +853,36 @@ MonoBehaviour:
   m_Damping: 1
   m_MinFOV: 60
   m_MaxFOV: 80
+--- !u!114 &3753560354616079904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763821905464181566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1
+  m_IgnoreTag: 
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &4818084670704734187
 GameObject:
   m_ObjectHideFlags: 3

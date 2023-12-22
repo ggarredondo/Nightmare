@@ -10,19 +10,23 @@ public class PlayerPhysics
     private float smoothMagnitude = 0f;
 
     [SerializeField] private float gravityScale = 1f;
+    [SerializeField] private float maxLinearVelocity;
     [SerializeField] private float groundedRotationSpeed, airborneRotationSpeed;
     [SerializeField] private float magnitudeAcceleration;
     [SerializeField] private float jumpingImpulse;
-    [SerializeField] private float airJumpingImpulse;
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
+    [SerializeField] private float airJumpingImpulse;
+    [SerializeField] private float thrustAcceleration;
 
     public void Initialize(in Rigidbody rb)
     {
         this.rb = rb;
         rb.useGravity = false;
+        rb.maxLinearVelocity = this.maxLinearVelocity;
         cameraTransform = Camera.main.transform;
     }
     public void Reference() {}
+    public void OnValidate() => rb.maxLinearVelocity = this.maxLinearVelocity;
 
     public event System.Action<float> OnMovement;
     public event System.Action OnJump;
@@ -71,6 +75,8 @@ public class PlayerPhysics
         if (rb.velocity.y > 0f) Gravity();
         else rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
     }
+
+    public void Thrust() => rb.AddForce(cameraTransform.forward * thrustAcceleration, ForceMode.Acceleration);
 
     public void SwitchToWalkCollider()
     {
