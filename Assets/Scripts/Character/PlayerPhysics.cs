@@ -7,12 +7,10 @@ public class PlayerPhysics
     private Rigidbody rb;
     [SerializeField] private Collider walkCollider;
     [SerializeField] private Collider[] airColliders;
-    private float smoothMagnitude = 0f;
 
     [SerializeField] private float gravityScale = 1f;
     [SerializeField] private float maxLinearVelocity;
     [SerializeField] private float groundedRotationSpeed, airborneRotationSpeed;
-    [SerializeField] private float magnitudeAcceleration;
     [SerializeField] private float jumpingImpulse;
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
     [SerializeField] private float airJumpingImpulse;
@@ -28,24 +26,24 @@ public class PlayerPhysics
     public void Reference() {}
     public void OnValidate() => rb.maxLinearVelocity = this.maxLinearVelocity;
 
-    public event System.Action<float> OnMovement;
     public event System.Action OnJump;
 
-    private void Movement(in Vector2 direction, float rotationSpeed)
+    private void RotatePlayer(in Vector2 direction, float rotationSpeed)
     {
         if (direction.magnitude > 0.1f) {
             float targetAngle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
             Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
             rb.rotation = Quaternion.Lerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
-        smoothMagnitude = Mathf.Lerp(smoothMagnitude, direction.magnitude, magnitudeAcceleration * Time.fixedDeltaTime);
+    }
+    public void RotatePlayerGround(in Vector2 direction) => RotatePlayer(direction, groundedRotationSpeed);
+    public void RotatePlayerAir(in Vector2 direction) => RotatePlayer(direction, airborneRotationSpeed);
+
+    public void RedirectVelocity()
+    {
         Vector3 planeVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.velocity = rb.transform.forward * planeVelocity.magnitude + rb.velocity.y * Vector3.up;
-        OnMovement?.Invoke(smoothMagnitude);
     }
-
-    public void GroundMovement(in Vector2 direction) => Movement(direction, groundedRotationSpeed);
-    public void AirMovement(in Vector2 direction) => Movement(direction, airborneRotationSpeed);
 
     public void Jump()
     {

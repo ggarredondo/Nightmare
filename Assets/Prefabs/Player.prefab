@@ -450,7 +450,6 @@ MonoBehaviour:
     maxLinearVelocity: 20
     groundedRotationSpeed: 10
     airborneRotationSpeed: 1
-    magnitudeAcceleration: 4
     jumpingImpulse: 7
     jumpCancelMultiplier: 0.5
     airJumpingImpulse: 4
@@ -469,6 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba50bed95d0cf248845829e3e709f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magnitudeAcceleration: 4
 --- !u!114 &2520353060762170984
 MonoBehaviour:
   m_ObjectHideFlags: 0

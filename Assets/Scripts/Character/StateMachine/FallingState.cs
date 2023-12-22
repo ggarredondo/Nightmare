@@ -17,7 +17,8 @@ public class FallingState : PlayerState
     public override void Update() {}
     public override void FixedUpdate()
     {
-        stateMachine.Physics.AirMovement(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.RotatePlayerAir(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.RedirectVelocity();
         stateMachine.Physics.Gravity();
     }
 

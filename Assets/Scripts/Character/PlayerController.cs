@@ -3,7 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float magnitudeAcceleration;
+    private float smoothMagnitude = 0f;
+
     private Vector2 movementDirection;
+    public event System.Action<float> OnUpdateMagnitude;
     public event System.Action OnPressSprint, OnReleaseSprint;
     public event System.Action OnPressJump, OnReleaseJump;
     public event System.Action OnPressLevitate, OnReleaseLevitate;
@@ -13,6 +17,12 @@ public class PlayerController : MonoBehaviour
     public void Reference() {}
 
     public void PressMovement(InputAction.CallbackContext context) => movementDirection = context.ReadValue<Vector2>();
+    public void UpdateMagnitude()
+    {
+        smoothMagnitude = Mathf.Lerp(smoothMagnitude, movementDirection.magnitude, magnitudeAcceleration * Time.deltaTime);
+        OnUpdateMagnitude?.Invoke(smoothMagnitude);
+    }
+
     public void PressSprint(InputAction.CallbackContext context)
     {
         if (context.performed) OnPressSprint?.Invoke();

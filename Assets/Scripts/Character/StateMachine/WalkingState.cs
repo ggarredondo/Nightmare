@@ -12,10 +12,11 @@ public class WalkingState : PlayerState
         base.Enter();
     }
 
-    public override void Update() {}
+    public override void Update() => stateMachine.Controller.UpdateMagnitude();
     public override void FixedUpdate()
     {
-        stateMachine.Physics.GroundMovement(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.RotatePlayerGround(stateMachine.Controller.MovementDirection);
+        stateMachine.Physics.RedirectVelocity();
         stateMachine.Physics.Gravity();
     }
 
