@@ -14,6 +14,7 @@ public class PlayerPhysics
     [SerializeField] [Range(0f, 1f)] private float jumpCancelMultiplier;
     [SerializeField] private float airJumpingImpulse;
     [SerializeField] private float thrustAcceleration;
+    [SerializeField] private float thrustVerticalOffset;
 
     public void Initialize(in Rigidbody rb)
     {
@@ -76,7 +77,8 @@ public class PlayerPhysics
         else rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
     }
 
-    public void Thrust() => rb.AddForce(cameraTransform.forward * thrustAcceleration, ForceMode.Acceleration);
+    public void Thrust() 
+        => rb.AddForce((cameraTransform.forward + Vector3.up * thrustVerticalOffset).normalized * thrustAcceleration, ForceMode.Acceleration);
 
     public void SwitchToWalkCollider()
     {
