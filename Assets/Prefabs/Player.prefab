@@ -456,9 +456,9 @@ MonoBehaviour:
     - {fileID: 7811102885335842177}
     gravityScale: 2
     maxLinearVelocity: 30
-    jumpingImpulse: 7
+    jumpingImpulse: 12
     jumpCancelMultiplier: 0.5
-    airJumpingImpulse: 4
+    airJumpingImpulse: 7
     thrustAcceleration: 20
   playerAnimation:
     animationSpeed: 1
