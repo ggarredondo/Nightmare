@@ -7,7 +7,7 @@ public class PlayerStateMachine
     private PlayerPhysics physics;
     private CollisionHandler collisionHandler;
 
-    [SerializeField] [ReadOnlyField] private string stateName;
+    [SerializeField] [ReadOnlyField] private string currentStateName;
 
     private PlayerState currentState;
     private WalkingState walkingState;
@@ -33,7 +33,7 @@ public class PlayerStateMachine
     {
         if (currentState != null) currentState.Exit();
         currentState = newState;
-        stateName = currentState.StateName;
+        currentStateName = currentState.StateName;
         currentState.Enter();
     }
 
