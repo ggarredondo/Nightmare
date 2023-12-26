@@ -18,7 +18,7 @@ public class FallingState : PlayerState
         base.Enter();
     }
 
-    public override void Update() {}
+    public override void Update() => stateMachine.EgoHandler.RegenEgo();
     public override void FixedUpdate()
     {
         stateMachine.Physics.RotateRelativeToCamera(stateMachine.Controller.MovementDirection, rotationSpeed);

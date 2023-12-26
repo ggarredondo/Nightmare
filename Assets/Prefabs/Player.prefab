@@ -444,8 +444,10 @@ MonoBehaviour:
       rotationSpeed: 1
     levitationState:
       rotationSpeed: 1
+      depletionRate: 25
     thrustingState:
       rotationSpeed: 10
+      depletionRate: 50
   physics:
     walkCollider: {fileID: 7363399057656064278}
     airColliders:
@@ -463,6 +465,11 @@ MonoBehaviour:
     thrustVerticalOffset: 0.2
   playerAnimation:
     animationSpeed: 1
+  egoHandler:
+    ego: 0
+    maxEgo: 100
+    regenRate: 10
+    minUsableEgo: 10
 --- !u!114 &2168286633247279865
 MonoBehaviour:
   m_ObjectHideFlags: 0

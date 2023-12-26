@@ -6,6 +6,7 @@ public class PlayerStateMachine
     private PlayerController controller;
     private PlayerPhysics physics;
     private CollisionHandler collisionHandler;
+    private EgoHandler egoHandler;
 
     [SerializeField] [ReadOnlyField] private string currentStateName;
     
@@ -23,10 +24,11 @@ public class PlayerStateMachine
         levitationState.Initialize(this);
         thrustingState.Initialize(this);
     }
-    public void Reference(in PlayerController controller, in PlayerPhysics physics) 
+    public void Reference(in PlayerController controller, in PlayerPhysics physics, in EgoHandler egoHandler) 
     {
         this.controller = controller;
         this.physics = physics;
+        this.egoHandler = egoHandler;
     }
 
     private void ChangeState(in PlayerState newState)
@@ -39,8 +41,16 @@ public class PlayerStateMachine
 
     public void TransitionToWalking() => ChangeState(walkingState);
     public void TransitionToFalling() => ChangeState(fallingState);
-    public void TransitionToLevitation() => ChangeState(levitationState);
-    public void TransitionToThrusting() => ChangeState(thrustingState);
+    public void TransitionToLevitation()
+    {
+        if (egoHandler.CurrentEgo > egoHandler.MinUsableEgo)
+            ChangeState(levitationState);
+    }
+    public void TransitionToThrusting()
+    {
+        if (egoHandler.CurrentEgo > egoHandler.MinUsableEgo)
+            ChangeState(thrustingState);
+    }
 
     private bool enableAirJump = true;
     public void AirJump()
@@ -55,6 +65,7 @@ public class PlayerStateMachine
     public ref readonly PlayerController Controller => ref controller;
     public ref readonly PlayerPhysics Physics => ref physics;
     public ref readonly CollisionHandler CollisionHandler => ref collisionHandler;
+    public ref readonly EgoHandler EgoHandler => ref egoHandler;
 
     public ref readonly PlayerState CurrentState => ref currentState;
     public ref readonly WalkingState WalkingState => ref walkingState;
