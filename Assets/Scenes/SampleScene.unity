@@ -17380,6 +17380,7 @@ GameObject:
   - component: {fileID: 332923043}
   - component: {fileID: 332923042}
   - component: {fileID: 332923041}
+  - component: {fileID: 332923044}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -17473,6 +17474,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332923039}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &332923044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332923039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae9108de702cd64f802b91625ced0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionToTeleport: {x: 10, y: 53, z: 6}
 --- !u!1 &333469974
 GameObject:
   m_ObjectHideFlags: 0
@@ -111094,7 +111108,7 @@ PrefabInstance:
     - target: {fileID: 1156136446250715026, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1156136446250715026, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
@@ -111154,7 +111168,7 @@ PrefabInstance:
     - target: {fileID: 2237546086918728619, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 2237546086918728619, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
@@ -111199,7 +111213,7 @@ PrefabInstance:
     - target: {fileID: 2582268647359849993, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1e-45
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 2582268647359849993, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
@@ -111234,7 +111248,7 @@ PrefabInstance:
     - target: {fileID: 4755012653017750680, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: -3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 4755012653017750680, guid: 3d694014f011d5944b22a2084fc183c0,
         type: 3}
