@@ -15,11 +15,7 @@ public class WalkingState : PlayerState
         base.Enter();
     }
 
-    public override void Update()
-    {
-        stateMachine.Controller.UpdateMagnitude();
-        stateMachine.EgoHandler.RegenEgo();
-    }
+    public override void Update() => stateMachine.EgoHandler.RegenEgo();
     public override void FixedUpdate()
     {
         stateMachine.Physics.RotateRelativeToCamera(stateMachine.Controller.MovementDirection, rotationSpeed);

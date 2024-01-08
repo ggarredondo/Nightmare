@@ -15,13 +15,13 @@ public class PlayerController : MonoBehaviour
     public void Initialize() => movementDirection = Vector2.zero;
     public void Reference() {}
 
-    public void PressMovement(InputAction.CallbackContext context) => movementDirection = context.ReadValue<Vector2>();
-    public void UpdateMagnitude()
+    private void Update()
     {
         smoothMagnitude = Mathf.Lerp(smoothMagnitude, movementDirection.magnitude, magnitudeAcceleration * Time.deltaTime);
         OnUpdateMagnitude?.Invoke(smoothMagnitude);
     }
 
+    public void PressMovement(InputAction.CallbackContext context) => movementDirection = context.ReadValue<Vector2>();
     public void PressJump(InputAction.CallbackContext context)
     {
         if (context.performed) OnPressJump?.Invoke();
