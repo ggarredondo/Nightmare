@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "b415da09-5125-45d5-9ff5-605a69ba3134",
                     "expectedControlType": "Vector2",
-                    "processors": "NormalizeVector2",
+                    "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
@@ -143,7 +143,7 @@
                     "id": "ce11ff1c-d771-47af-9266-2e8e4f7f1bd6",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "groups": "Scheme",
                     "action": "Look",
                     "isComposite": false,
