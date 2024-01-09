@@ -21,9 +21,8 @@ public class PlayerPhysics
         this.rb = rb;
         rb.useGravity = false;
         rb.maxLinearVelocity = this.maxLinearVelocity;
-        cameraTransform = Camera.main.transform;
     }
-    public void Reference() {}
+    public void Reference() => cameraTransform = Camera.main.transform;
 
     public void RotateRelativeToCamera(in Vector2 direction, float rotationSpeed)
     {
