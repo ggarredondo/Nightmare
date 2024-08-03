@@ -21,6 +21,8 @@ While in the air, the player can hold the jump button again to **levitate**. Lev
 <img src="https://i.imgur.com/UR6iQrr.gif" width="45%"></img>
 <img src="https://i.imgur.com/03p6JC9.gif" width="45%"></img>
 <br/> <br/>
-The player can rotate and change direction mid-air (regardless of whether they're falling or levitating), but they can't build up speed. To build up speed, they can use the **thrust** action. By holding the *right trigger* (on gamepad) or the mouse's *left click*, the player is launched forward in the direction of the camera. This action uses up a lot of **ego** though
+The player can rotate and change direction mid-air (regardless of whether they're falling or levitating), but they can't build up speed. To build up speed, they can use the **thrust** action. By holding the *right trigger* (on gamepad) or the mouse's *left click*, the player is launched forward in the direction of the camera. This action uses up a lot of **ego** though, so it has to be used sparingly.
 <br/> <br/>
 <img src="https://i.imgur.com/5ysXMBz.gif" width="45%"></img>
+<br/> <br/>
+All of these actions together shape Nightmare's character into the agile but skill-demanding avatar any good flying platformer should have. After all, *falling sells the feeling of flight*.
