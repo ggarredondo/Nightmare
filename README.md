@@ -26,3 +26,9 @@ The player can rotate and change direction mid-air (regardless of whether they'r
 <img src="https://i.imgur.com/5ysXMBz.gif" width="45%"></img>
 <br/> <br/>
 All of these actions together shape Nightmare's character into the agile but skill-demanding avatar any good flying platformer should have. After all, *falling sells the feeling of flight*.
+
+## Controller
+There are four main components which form the player controller: the state machine, the physics handler, the animation handler and the ego meter.
+
+### State Machine
+The state machine guides
