@@ -38,4 +38,4 @@ For example, the jumping action is only evaluated in the walking state, which ma
 <img src="https://i.imgur.com/pSxNfbY.gif" width="45%"></img>
 <img src="https://i.imgur.com/RYr05qX.gif" width="45%"></img>
 <br/> <br/>
-Each state handles the physics that are relevant to their context, they define the transitions to the other states under the right conditions and enable the actions that can be performed in said context.
+Each state handles the physics that are relevant to their context, they define the transitions to other states under the right conditions and enable the actions that can be performed in said context.
