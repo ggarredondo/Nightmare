@@ -39,3 +39,9 @@ For example, the jumping action is only evaluated in the walking state, which ma
 <img src="https://i.imgur.com/RYr05qX.gif" width="45%"></img>
 <br/> <br/>
 Each state handles the physics that are relevant to their context, they define the transitions to other states under the right conditions and enable the actions that can be performed in said context.
+
+### Physics Handler
+This components manages all the different forces that may affect the player in the game. It implements these forces as methods that each state can call if applicable to its context. Furthermore, they can adjusted through accesible parameters in Unity's inspector window.
+<br/> <br/>
+<img src="https://i.imgur.com/8cn6C5F.png"></img>
+<br/> <br/>
