@@ -38,10 +38,25 @@ For example, the jumping action is only evaluated in the walking state, which ma
 <img src="https://i.imgur.com/pSxNfbY.gif" width="45%"></img>
 <img src="https://i.imgur.com/RYr05qX.gif" width="45%"></img>
 <br/> <br/>
-Each state handles the physics that are relevant to their context, they define the transitions to other states under the right conditions and enable the actions that can be performed in said context.
+Each state handles the physics that are relevant to their context, they define the transitions to other states under the right conditions and enable the actions that can be performed in said context. Furthermore, they have public parameters which can be accessed via Unity's inspector window. This allows state-specific values to be adjusted on the fly while playtesting.
+<br/> <br/>
+<img src="https://i.imgur.com/3mEf7FQ.png"></img>
+<br/> <br/>
 
 ### Physics Handler
-This components manages all the different forces that may affect the player in the game. It implements these forces as methods that each state can call if applicable to its context. Furthermore, they can adjusted through accesible parameters in Unity's inspector window.
+This components manages all the different forces that may affect the player in the game. It implements these forces as methods that each state can call if applicable to their context. Moreover, all arbitrary parameters related to the game's design are also accessible through Unity's inspector window.
 <br/> <br/>
 <img src="https://i.imgur.com/8cn6C5F.png"></img>
+<br/> <br/>
+
+### Animation Handler
+The animation component is implemented as an observer to the player's internal state machine. It triggers parameters in Unity's animator system when entering and exiting each player state to display the corresponding animation each time. It also blends animations when running and landing, taking into account the player's current velocity.
+<br/> <br/>
+<img src="https://i.imgur.com/UX7zbLb.png"></img>
+<br/> <br/>
+
+### Ego Handler
+This simple component manages the ego meter state over time. It implements methods for depleting and regenerating ego so that each state can call whichever is relevant to their context. In addition, it notifies the state machine whenever the meter is depleted.
+<br/> <br/>
+<img src="https://i.imgur.com/vCST7hy.png"></img>
 <br/> <br/>
