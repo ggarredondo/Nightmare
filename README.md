@@ -16,7 +16,7 @@ By pressing the *south button* (on gamepad) or the *spacebar*, the player can **
 <img src="https://i.imgur.com/kTStofY.gif" width="45%"></img>
 <img src="https://i.imgur.com/a85BV0f.gif" width="45%"></img>
 <br/> <br/>
-While in the air, the player can hold the jump button again to **levitate**. Levitation cancels gravity but it uses up **ego**, an energy meter represented by the blue wheel at the center of the screen. When it runs out, the player can't levitate anymore, and must wait for the ego wheel to regenerate to a minimum before levitating again (indicated by the orange hue).
+While in the air, the player can hold the jump button again to **levitate**. Levitation cancels gravity but it uses up **ego**, an energy meter represented by the blue wheel at the center of the screen. When it runs out, the player can't levitate anymore, and must wait for the ego wheel to regenerate to a minimum (indicated by the orange hue) before levitating again.
 <br/> <br/>
 <img src="https://i.imgur.com/UR6iQrr.gif" width="45%"></img>
 <img src="https://i.imgur.com/03p6JC9.gif" width="45%"></img>
@@ -31,7 +31,7 @@ All of these actions together shape Nightmare's character into the agile but ski
 There are four main components which form the player controller: the state machine, the physics handler, the animation handler and the ego meter.
 
 ### State Machine
-Following the mathematical model of computation known as *finite-state machines*, the player is implemented as an abstract machine that can only be in one of four states at a given time (walking, falling, levitating and thrusting). This allows us to encapsulate context-specific behavior and actions into each state without affecting the other states. 
+Following the mathematical model of computation known as *finite-state machine*, the player is implemented as an abstract machine that can only be in one of four states at a given time (walking, falling, levitating and thrusting). This allows us to encapsulate context-specific behavior and actions into each state without affecting the other states. 
 
 For example, the jumping action is only evaluated in the walking state, which makes it intrisincally impossible to jump while falling or levitating. Also, cancelling gravity for levitation is as simple as disabling gravity for the levitating state (though it's also disabled in thrusting state).
 <br/> <br/>
